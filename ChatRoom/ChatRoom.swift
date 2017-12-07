@@ -13,14 +13,13 @@ protocol ChatRoomDelegateProtocol {
 }
 
 class ChatRoom : NSObject, StreamDelegate {
-    var delegate: ChatRoomDelegateProtocol?
-    var inputStream: InputStream!
-    var outputStream: OutputStream!
-    
-    var chatServerReachability: Reachability
+    var delegate: ChatRoomDelegateProtocol?             // Chat Roome Delegate
+    var inputStream: InputStream!                       // Input Stream
+    var outputStream: OutputStream!                     // Output Stream
+    var chatServerReachability: Reachability            // Chat Server Reachability
 
-    let chatServerIP = "52.91.109.76"
-    let chatServerPort: UInt32 = 1234
+    let chatServerIP = "52.91.109.76"                   // Chat Server IP Address
+    let chatServerPort: UInt32 = 1234                   // Chat Server Port
 
     override init() {
         self.delegate = nil
@@ -103,7 +102,7 @@ class ChatRoom : NSObject, StreamDelegate {
         }
     }
  
-    // MARK: Reachability
+    // MARK: Chat Server Reachability
     func startCheckingReachability() {
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(_:)), name: NSNotification.Name.reachabilityChanged, object: nil)
         self.chatServerReachability.startNotifier()
@@ -127,5 +126,27 @@ class ChatRoom : NSObject, StreamDelegate {
     
     @objc func reachabilityChanged(_ notification: NSNotification) {
         let _ = isChatServerReachable()
+    }
+    
+    // MARK: Outgoing Messages
+    
+    func deleteOutgoingMessages() {
+        
+    }
+    
+    func loadOutgoingMessages() {
+        
+    }
+    
+    func saveOutgoingMessages() {
+        
+    }
+    
+    func sendOutgoingMessages() {
+        
+    }
+    
+    func addOutgoingMessages(_ message: Message) {
+        
     }
 }

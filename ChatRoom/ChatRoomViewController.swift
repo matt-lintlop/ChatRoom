@@ -37,6 +37,10 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func sendPressed(_ sender: Any) {
+        print("Send Button Pressed")
+    }
+    
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let message = textField.text?.trimmingCharacters(in: CharacterSet(charactersIn: "\r\n")) {

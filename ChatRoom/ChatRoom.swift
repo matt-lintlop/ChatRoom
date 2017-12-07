@@ -13,11 +13,12 @@ protocol ChatRoomDelegateProtocol {
 }
 
 class ChatRoom : NSObject {
-    var delegate: ChatRoomDelegateProtocol?             // Chat Roome Delegate
+    var delegate: ChatRoomDelegateProtocol?             // Chat Room Delegate
     var inputStream: InputStream!                       // Input Stream
     var outputStream: OutputStream!                     // Output Stream
     var chatServerReachability: Reachability            // Chat Server Reachability
     var outgoingMessages: [Message]?                    // Outgoing Messages
+    var lastTimeConnected: Int?                         // Time Of Last Connection To The Chat Server
 
     let chatServerIP = "52.91.109.76"                   // Chat Server IP Address
     let chatServerPort: UInt32 = 1234                   // Chat Server Port
@@ -32,6 +33,9 @@ class ChatRoom : NSObject {
 
         // load outgoing messages that are persisted on disk
         self.loadOutgoingMessages()
+        
+        // get time time when last connecyed to the cat server
+        getLastTimeConnected()
    }
     
     deinit {
@@ -87,6 +91,24 @@ class ChatRoom : NSObject {
         outputStream.open()
     }
 
+    func getLastTimeConnected() {
+        let defaults = UserDefaults()
+        let lastTime = defaults.integer(forKey: "lastTimeConnected")
+        if lastTime == 0 {
+            setLastTimeConnectedToNow()
+        }
+        else {
+            print("Retrieved Last Time Connected: \(lastTime)")
+        }
+    }
+    
+    func setLastTimeConnectedToNow() {
+        let defaults = UserDefaults()
+        let time = currentTime()
+        defaults.set(time, forKey: "lastTimeConnected")
+        print("Saved Last Time Connected: \(time)")
+    }
+    
     // Parse JSON from the server 1 object at a time
     func parseJSONFromServer(_ json: String) {
         print("Processing JSON fro Server:\n\(json)")

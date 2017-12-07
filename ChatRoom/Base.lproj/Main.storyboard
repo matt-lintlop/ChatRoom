@@ -71,6 +71,7 @@
                         <outlet property="messageLabelRightConstraint" destination="RZo-EP-Wna" id="tqQ-KY-YK4"/>
                         <outlet property="messageTextField" destination="kx4-dg-NUF" id="Z8h-3f-8in"/>
                         <outlet property="messagesTextView" destination="Pa4-5A-DrV" id="EhM-Q7-7Uc"/>
+                        <outlet property="sendButton" destination="wgn-Nq-amW" id="mYV-NQ-a6a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

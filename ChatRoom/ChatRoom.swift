@@ -26,6 +26,11 @@ class ChatRoom : NSObject, StreamDelegate {
     override init() {
         self.delegate = nil
         self.chatServerReachability = Reachability(hostName: chatServerIP)
+        
+        super.init()
+
+        // load outgoing messages that are persisted on disk
+        self.loadOutgoingMessages()
    }
     
     deinit {

@@ -14,6 +14,7 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var messageLabelBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var messageLabelRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var sendButton: UIButton!
     
     var chatRoom: ChatRoom!
     
@@ -31,6 +32,9 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.handleTextFieldChanged(notification:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+
+        enableSendButton()
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,25 +48,20 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         }
         chatRoom.userDidEnterMessage(text)
         messageTextField.text = nil
+        enableSendButton()
     }
     
-    // MARK: UITextFieldDelegate
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        if let message = textField.text?.trimmingCharacters(in: CharacterSet(charactersIn: "\r\n")) {
-//            showMessage(message)
-//        }
-//        messageTextField.text = nil
-//        messageTextField.resignFirstResponder()
-//        return false
-//    }
+    func enableSendButton() {
+        var enabled = false
+        if let text = messageTextField.text {
+            if text.count >= 1 {
+                enabled = true
+            }
+        }
+        sendButton.isEnabled = enabled
+     }
     
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        if let message = textField.text?.trimmingCharacters(in: CharacterSet(charactersIn: "\r\n")) {
-//            showMessage(message)
-//        }
-//        messageTextField.text = nil
-//        return true
-//    }
+    // MARK: Notifications
     
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]) as? NSValue)?.cgRectValue else {
@@ -87,6 +86,10 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         }
     }
     
+    @objc func handleTextFieldChanged(notification: NSNotification) {
+        enableSendButton()
+    }
+
     // MARK: ChatRoomDelegateProtocol
     
     func showMessage(_ message: String) {
@@ -101,6 +104,14 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
                 self.messagesTextView.text.append("\(message)\r")
             })
         }
+    }
+    
+    // MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // hide the keyboard when Return pressed
+        textField.resignFirstResponder()
+        return true
     }
 }
 

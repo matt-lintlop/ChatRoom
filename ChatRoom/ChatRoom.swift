@@ -27,13 +27,19 @@ class ChatRoom {
         encoder.outputFormatting = .prettyPrinted
         
         do {
-            let data = try encoder.encode(message)
-            let json = String(data: data, encoding: .utf8)
-            print("Message JSON:\n\(json!.debugDescription)")
+//            let data = try encoder.encode(message)
+//            let json = String(data: data, encoding: .utf8)
+//            print("Message JSON:\n\(json!.debugDescription)")
             
-            let message2 = try JSONDecoder().decode(Message.self, from: data)
+ //           let json = "{\n  \"msg\" : \"Hello There!\",\n  \"client_time\" : 123456\n}"
+            
+            let json = "{'msg':'hello from the other side','client_time':1446754551485,'server_time':1512609867179}"
+            let json2 = json.replacingOccurrences(of: "'", with: "\"")
+            let data = json2.data(using: .utf8)
+            let message2 = try JSONDecoder().decode(Message.self, from: data!)
             print("Message 2: \(message2)")
          } catch {
+            print("Error parsing: \(error)")
         }
 
     }

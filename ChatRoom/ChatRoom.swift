@@ -17,6 +17,7 @@ class ChatRoom : NSObject, StreamDelegate {
     var inputStream: InputStream!                       // Input Stream
     var outputStream: OutputStream!                     // Output Stream
     var chatServerReachability: Reachability            // Chat Server Reachability
+    var outgoingMessages: [Message]?                    // Outgoing Messages
 
     let chatServerIP = "52.91.109.76"                   // Chat Server IP Address
     let chatServerPort: UInt32 = 1234                   // Chat Server Port
@@ -130,23 +131,31 @@ class ChatRoom : NSObject, StreamDelegate {
     
     // MARK: Outgoing Messages
     
-    func deleteOutgoingMessages() {
-        
-    }
-    
+    // Load all outgoing messages
     func loadOutgoingMessages() {
         
     }
     
+    // Save all outgoing messages
     func saveOutgoingMessages() {
         
     }
     
+    // Send all outgoing messages
     func sendOutgoingMessages() {
         
     }
     
-    func addOutgoingMessages(_ message: Message) {
+    // Add a new outgoing mesage
+    func addOutgoingMessage(_ message: Message) {
+        if outgoingMessages == nil {
+            outgoingMessages = []
+        }
+        outgoingMessages?.append(message)
+    }
+    
+    // Delete all outgoing messages
+    func deleteOutgoingMessages() {
         
     }
 }

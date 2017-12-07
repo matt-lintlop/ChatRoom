@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34333E3F1FD97C8B00C2BB23 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 34333E3D1FD97C8B00C2BB23 /* Reachability.m */; };
 		346964501FD89B62000B8EF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3469644F1FD89B62000B8EF0 /* AppDelegate.swift */; };
 		346964521FD89B62000B8EF0 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346964511FD89B62000B8EF0 /* ChatRoomViewController.swift */; };
 		346964551FD89B63000B8EF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 346964531FD89B62000B8EF0 /* Main.storyboard */; };
@@ -18,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34333E3C1FD97C8A00C2BB23 /* MyChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyChat-Bridging-Header.h"; sourceTree = "<group>"; };
+		34333E3D1FD97C8B00C2BB23 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		34333E3E1FD97C8B00C2BB23 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3469644C1FD89B62000B8EF0 /* MyChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3469644F1FD89B62000B8EF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		346964511FD89B62000B8EF0 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
@@ -64,11 +68,14 @@
 				346964511FD89B62000B8EF0 /* ChatRoomViewController.swift */,
 				34D600D41FD8D85F006C68B4 /* ChatRoom.swift */,
 				346964611FD8A072000B8EF0 /* Utility.swift */,
+				34333E3E1FD97C8B00C2BB23 /* Reachability.h */,
+				34333E3D1FD97C8B00C2BB23 /* Reachability.m */,
 				346964531FD89B62000B8EF0 /* Main.storyboard */,
 				34A433411FD8B718003DAA90 /* Message.swift */,
 				346964561FD89B63000B8EF0 /* Assets.xcassets */,
 				346964581FD89B63000B8EF0 /* LaunchScreen.storyboard */,
 				3469645B1FD89B63000B8EF0 /* Info.plist */,
+				34333E3C1FD97C8A00C2BB23 /* MyChat-Bridging-Header.h */,
 			);
 			path = ChatRoom;
 			sourceTree = "<group>";
@@ -105,6 +112,7 @@
 				TargetAttributes = {
 					3469644B1FD89B62000B8EF0 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -149,6 +157,7 @@
 				34A433421FD8B718003DAA90 /* Message.swift in Sources */,
 				346964501FD89B62000B8EF0 /* AppDelegate.swift in Sources */,
 				34D600D51FD8D85F006C68B4 /* ChatRoom.swift in Sources */,
+				34333E3F1FD97C8B00C2BB23 /* Reachability.m in Sources */,
 				346964621FD8A072000B8EF0 /* Utility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,12 +295,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = US5DTPYQ6L;
 				INFOPLIST_FILE = ChatRoom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.opengarden.ChatRoom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ChatRoom/MyChat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -301,12 +313,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = US5DTPYQ6L;
 				INFOPLIST_FILE = ChatRoom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.opengarden.ChatRoom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ChatRoom/MyChat-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

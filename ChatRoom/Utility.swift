@@ -14,3 +14,5 @@ func currentTime() -> Int {
     let now = Date.init(timeIntervalSinceNow: 0)
     return Int(now.timeIntervalSince1970 * 1000)
 }
+
+

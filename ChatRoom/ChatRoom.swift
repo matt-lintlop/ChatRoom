@@ -34,8 +34,6 @@ class ChatRoom : NSObject, StreamDelegate {
     }
     
     func testMessageJSON() {
-        let message = Message(msg: "Hello There!", client_time: 123456)
-        
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         
@@ -137,7 +135,7 @@ class ChatRoom : NSObject, StreamDelegate {
 
         if isChatServerReachable() {
             // the chat server is reachable. send the messag
-            sendMessage(newMessage)
+            _ = sendMessage(newMessage)
         }
         else {
             // the chat server is not reachable. add the message to outgoing messages.

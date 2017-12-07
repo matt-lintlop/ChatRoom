@@ -39,26 +39,30 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
     }
     
     @IBAction func sendPressed(_ sender: Any) {
-        print("Send Button Pressed")
+        guard let text = messageTextField.text else {
+            return
+        }
+        chatRoom.userDidEnterMessage(text)
+        messageTextField.text = nil
     }
     
     // MARK: UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let message = textField.text?.trimmingCharacters(in: CharacterSet(charactersIn: "\r\n")) {
-            showMessage(message)
-        }
-        messageTextField.text = nil
-        messageTextField.resignFirstResponder()
-        return false
-    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        if let message = textField.text?.trimmingCharacters(in: CharacterSet(charactersIn: "\r\n")) {
+//            showMessage(message)
+//        }
+//        messageTextField.text = nil
+//        messageTextField.resignFirstResponder()
+//        return false
+//    }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let message = textField.text?.trimmingCharacters(in: CharacterSet(charactersIn: "\r\n")) {
-            showMessage(message)
-        }
-        messageTextField.text = nil
-        return true
-    }
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        if let message = textField.text?.trimmingCharacters(in: CharacterSet(charactersIn: "\r\n")) {
+//            showMessage(message)
+//        }
+//        messageTextField.text = nil
+//        return true
+//    }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]) as? NSValue)?.cgRectValue else {

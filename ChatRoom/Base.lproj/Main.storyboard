@@ -42,9 +42,9 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgn-Nq-amW">
-                                <rect key="frame" x="302" y="624" width="57" height="30"/>
+                                <rect key="frame" x="302" y="627" width="57" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" priority="950" constant="57" id="y5E-cO-T3E"/>
+                                    <constraint firstAttribute="width" priority="500" constant="57" id="y5E-cO-T3E"/>
                                 </constraints>
                                 <state key="normal" title="Send"/>
                                 <connections>
@@ -57,7 +57,7 @@
                             <constraint firstItem="kx4-dg-NUF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="7iS-Gp-W9R"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kx4-dg-NUF" secondAttribute="bottom" constant="10" id="FH7-iK-NpO"/>
                             <constraint firstItem="Pa4-5A-DrV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Hdq-1W-s61"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wgn-Nq-amW" secondAttribute="bottom" constant="13" id="LK2-bn-uTu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wgn-Nq-amW" secondAttribute="bottom" constant="10" id="LK2-bn-uTu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pa4-5A-DrV" secondAttribute="trailing" constant="16" id="Xwf-Kk-7Tg"/>
                             <constraint firstItem="kx4-dg-NUF" firstAttribute="top" secondItem="Pa4-5A-DrV" secondAttribute="bottom" constant="10" id="bob-e9-ndf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wgn-Nq-amW" secondAttribute="trailing" constant="16" id="dCM-3J-nEf"/>

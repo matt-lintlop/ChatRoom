@@ -16,12 +16,20 @@ class ChatRoom : NSObject, StreamDelegate {
     var delegate: ChatRoomDelegateProtocol?
     var inputStream: InputStream!
     var outputStream: OutputStream!
+    
+    var chatServerReachability: Reachability
 
     let chatServerIP = "52.91.109.76"
     let chatServerPort: UInt32 = 1234
 
     override init() {
         self.delegate = nil
+        self.chatServerReachability = Reachability(hostName: chatServerIP)
+        self.chatServerReachability.startNotifier()
+   }
+    
+    deinit {
+        self.chatServerReachability.stopNotifier()
     }
     
     func testMessageJSON() {
@@ -95,4 +103,22 @@ class ChatRoom : NSObject, StreamDelegate {
             }
         }
     }
+ 
+    // MARK: Reachability
+    func isChatServerReachable() -> Bool {
+        var reachable = false
+        switch chatServerReachability.currentReachabilityStatus() {
+            case ReachableViaWiFi,ReachableViaWWAN:
+                reachable = true
+                print("The chat server is Reachable");
+            case NotReachable:
+                reachable = false
+                print("The chat server is Not Reachable");
+            default:
+                reachable = false
+                print("The chat server is Not Reachable");
+        }
+        return reachable
+    }
+    
 }

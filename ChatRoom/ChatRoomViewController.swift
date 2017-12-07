@@ -22,7 +22,8 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         self.chatRoom = ChatRoom()
         self.chatRoom.delegate = self
         
-        self.chatRoom.testMessageJSON()     // TESTIG
+        self.chatRoom.isChatServerReachable()   // TESING
+        self.chatRoom.testMessageJSON()     // TESTING\
         print("Time is now \(currentTime())")
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)

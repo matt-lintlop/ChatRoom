@@ -147,7 +147,7 @@ class ChatRoom : NSObject, StreamDelegate {
         do {
             let data = try Data(contentsOf: url, options: [])
             self.outgoingMessages = try decoder.decode([Message].self, from: data)
-            print("Loaded Outgoing Messages From Disk: \(outgoingMessages!.count)")
+            print("Loaded \(outgoingMessages!.count) Outgoing Messages From Disk")
             print("Outgoing Messages: \(outgoingMessages!.debugDescription)")
         } catch {
             print("Error Loading Outgoing Messages!: \(error.localizedDescription)")
@@ -183,14 +183,23 @@ class ChatRoom : NSObject, StreamDelegate {
         guard outgoingMessages.count > 0 else {
             return
         }
+        var sentMessageCount = 0;
+        var failedMessageCount = 0;
+
         DispatchQueue.global(qos: .background).async {
             var failedMessages: [Message] = []
             for message in outgoingMessages {
                 if (!self.sendMessage(message)) {
                     failedMessages.append(message)
+                    failedMessageCount += 1
+                }
+                else {
+                    sentMessageCount += 1
                 }
             }
-           self.outgoingMessages = failedMessages
+            self.outgoingMessages = failedMessages
+            print("Sent \(sentMessageCount) Messages")
+            print("Error Sending \(failedMessageCount) Messages")
         }
     }
     

@@ -44,7 +44,7 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgn-Nq-amW">
                                 <rect key="frame" x="302" y="624" width="57" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="57" id="y5E-cO-T3E"/>
+                                    <constraint firstAttribute="width" priority="950" constant="57" id="y5E-cO-T3E"/>
                                 </constraints>
                                 <state key="normal" title="Send"/>
                                 <connections>
@@ -67,6 +67,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="messageLabelBottomConstraint" destination="FH7-iK-NpO" id="Mqm-Ud-jNE"/>
                         <outlet property="messageTextField" destination="kx4-dg-NUF" id="Z8h-3f-8in"/>
                         <outlet property="messagesTextView" destination="Pa4-5A-DrV" id="EhM-Q7-7Uc"/>
                     </connections>

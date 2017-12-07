@@ -314,7 +314,6 @@ extension ChatRoom: StreamDelegate {
                 }
             }
             
-            // process all of the data from the chat server
            processDataFromChatServer(buffer: buffer, length: numberOfBytesRead)
         }
     }

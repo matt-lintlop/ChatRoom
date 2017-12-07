@@ -130,6 +130,12 @@ class ChatRoom : NSObject, StreamDelegate {
         let _ = isChatServerReachable()
     }
     
+    // MARK: Sending Messages
+    func sendMessage(_ message: Message) -> Bool {
+        
+        return true
+    }
+    
     // MARK: Outgoing Messages
     
     // Load all outgoing messages
@@ -148,14 +154,44 @@ class ChatRoom : NSObject, StreamDelegate {
         }
     }
     
-    // Save all outgoing messages
+    // Save all outgoing messages tto the local disk.
     func saveOutgoingMessages() {
-        
+        guard let outgoingMessages = outgoingMessages else {
+            return
+        }
+        guard outgoingMessages.count > 0 else {
+            return
+        }
+        guard let url = getOutgoingMessagesURL() else {
+            return
+        }
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(outgoingMessages)
+            try data.write(to: url, options: [])
+            print("Saved Reservations To Disk: \(outgoingMessages.count)")
+        } catch {
+            print("Error Saving Outgoing Messages!: \(error.localizedDescription)")
+        }
     }
     
     // Send all outgoing messages
     func sendOutgoingMessages() {
-        
+        guard let outgoingMessages = outgoingMessages else {
+            return
+        }
+        guard outgoingMessages.count > 0 else {
+            return
+        }
+        DispatchQueue.global(qos: .background).async {
+            var failedMessages: [Message] = []
+            for message in outgoingMessages {
+                if (!self.sendMessage(message)) {
+                    failedMessages.append(message)
+                }
+            }
+           self.outgoingMessages = failedMessages
+        }
     }
     
     // Add a new outgoing mesage
@@ -169,7 +205,10 @@ class ChatRoom : NSObject, StreamDelegate {
     
     // Delete all outgoing messages
     func deleteOutgoingMessages() {
-        
+        guard let url = getOutgoingMessagesURL() else {
+            return
+        }
+        try? FileManager().removeItem(at: url)
     }
     
     // Get the url of the outgoing messages data file

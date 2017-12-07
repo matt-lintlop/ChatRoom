@@ -35,7 +35,7 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
     
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let message = textField.text {
+        if let message = textField.text?.trimmingCharacters(in: CharacterSet(charactersIn: "\r\n")) {
             showMessage(message)
         }
         messageTextField.text = nil
@@ -44,7 +44,7 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let message = textField.text {
+        if let message = textField.text?.trimmingCharacters(in: CharacterSet(charactersIn: "\r\n")) {
             showMessage(message)
         }
         messageTextField.text = nil
@@ -75,18 +75,15 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
     // MARK: ChatRoomDelegateProtocol
     
     func showMessage(_ message: String) {
+        guard message.count > 0 else {
+            return
+        }
         if Thread.current.isMainThread {
-            messagesTextView.text.append(message)
-            if (message.last != "\n") && ( message.last != "\r") {
-                messagesTextView.text.append("\n")
-            }
+            messagesTextView.text.append("\(message)\r")
         }
         else {
             DispatchQueue.main.async(execute: {
-                self.messagesTextView.text.append(message)
-                if (message.last != "\n") && ( message.last != "\r") {
-                    self.messagesTextView.text.append("\n")
-                }
+                self.messagesTextView.text.append("\(message)\r")
             })
         }
     }

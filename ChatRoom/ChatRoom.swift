@@ -37,10 +37,16 @@ class ChatRoom {
                     {'msg':'queuing','client_time':1512612367635,'server_time':1512612365772}
                     {'msg':'refactoring','client_time':1512612904839,'server_time':1512612902974}
                     {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512612924827}
+                    {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512612924827}
+                    {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512612932812}
+                    {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512612933477}
+                    {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512612934116}
+                    {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512612934741}
                     """
         parseJSONFromServer(json)
     }
     
+    // Parse JSON from the server 1 object at a time
     func parseJSONFromServer(_ json: String) {
         let formattedJSON = json.replacingOccurrences(of: "'", with: "\"")
         var currenJSONItem: String = ""
@@ -60,11 +66,5 @@ class ChatRoom {
                 currenJSONItem = ""
             }
         }
-//
-//
-//        let data = formattedJSON.data(using: .utf8)
-//        let message2 = try JSONDecoder().decode(Message.self, from: data!)
-//        delegate?.showMessage(message2.msg)
-//        print("Message 2: \(message2)")
     }
 }

@@ -131,6 +131,20 @@ class ChatRoom : NSObject, StreamDelegate {
     }
     
     // MARK: Sending Messages
+    func userDidEnterMessage(_ text: String) {
+        // create a new Message with the given text at the current time
+        let newMessage = Message(msg: text, client_time: currentTime())
+       
+        if isChatServerReachable() {
+            // the chat server is reachable. send the messag
+            sendMessage(newMessage)
+        }
+        else {
+            // the chat server is not reachable. add the message to outgoing messages.
+            addOutgoingMessage(newMessage)
+        }
+    }
+    
     func sendMessage(_ message: Message) -> Bool {
         
         return true

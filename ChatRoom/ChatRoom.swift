@@ -21,6 +21,7 @@ class ChatRoom : NSObject, StreamDelegate {
 
     let chatServerIP = "52.91.109.76"                   // Chat Server IP Address
     let chatServerPort: UInt32 = 1234                   // Chat Server Port
+    let outgoingMessagesDataFileName = "OutgoingMessages.json"
 
     override init() {
         self.delegate = nil
@@ -133,7 +134,18 @@ class ChatRoom : NSObject, StreamDelegate {
     
     // Load all outgoing messages
     func loadOutgoingMessages() {
-        
+        guard let url = getOutgoingMessagesURL() else  {
+            return
+        }
+        let decoder = JSONDecoder()
+        do {
+            let data = try Data(contentsOf: url, options: [])
+            self.outgoingMessages = try decoder.decode([Message].self, from: data)
+            print("Loaded Outgoing Messages From Disk: \(outgoingMessages!.count)")
+            print("Outgoing Messages: \(outgoingMessages!.debugDescription)")
+        } catch {
+            print("Error Loading Outgoing Messages!: \(error.localizedDescription)")
+        }
     }
     
     // Save all outgoing messages
@@ -152,10 +164,19 @@ class ChatRoom : NSObject, StreamDelegate {
             outgoingMessages = []
         }
         outgoingMessages?.append(message)
+        saveOutgoingMessages()
     }
     
     // Delete all outgoing messages
     func deleteOutgoingMessages() {
         
+    }
+    
+    // Get the url of the outgoing messages data file
+    func getOutgoingMessagesURL() -> URL? {
+        guard let docURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return nil
+        }
+        return docURL.appendingPathComponent(outgoingMessagesDataFileName)
     }
 }

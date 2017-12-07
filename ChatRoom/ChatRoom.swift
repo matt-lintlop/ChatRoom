@@ -144,7 +144,7 @@ class ChatRoom : NSObject, StreamDelegate {
     }
     
     func sendMessage(_ message: Message) -> Bool {
-        
+        delegate?.showMessage(message.msg)
         return true
     }
     

@@ -12,7 +12,7 @@ protocol ChatRoomDelegateProtocol {
     func showMessage(_ message: String);
 }
 
-class ChatRoom : NSObject, StreamDelegate {
+class ChatRoom : NSObject {
     var delegate: ChatRoomDelegateProtocol?             // Chat Roome Delegate
     var inputStream: InputStream!                       // Input Stream
     var outputStream: OutputStream!                     // Output Stream
@@ -22,6 +22,7 @@ class ChatRoom : NSObject, StreamDelegate {
     let chatServerIP = "52.91.109.76"                   // Chat Server IP Address
     let chatServerPort: UInt32 = 1234                   // Chat Server Port
     let outgoingMessagesDataFileName = "OutgoingMessages.json"
+    let maxReadLength = 1024*4                          // maximum # of bytes read from chat server
 
     override init() {
         self.delegate = nil
@@ -88,6 +89,8 @@ class ChatRoom : NSObject, StreamDelegate {
 
     // Parse JSON from the server 1 object at a time
     func parseJSONFromServer(_ json: String) {
+        print("Processing JSON fro Server:\n\(json)")
+        
         let formattedJSON = json.replacingOccurrences(of: "'", with: "\"")
         var currenJSONItem: String = ""
         var index = 0;
@@ -244,4 +247,59 @@ class ChatRoom : NSObject, StreamDelegate {
         }
         return docURL.appendingPathComponent(outgoingMessagesDataFileName)
     }
+    
+    func stopChatSession() {
+        inputStream.close()
+        outputStream.close()
+    }
 }
+
+extension ChatRoom: StreamDelegate {
+    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+        switch eventCode {
+        case Stream.Event.hasBytesAvailable:
+            print("new message received")
+            readAvailableBytes(stream: aStream as! InputStream)
+        case Stream.Event.endEncountered:
+            stopChatSession()
+        case Stream.Event.errorOccurred:
+            print("error occurred")
+        case Stream.Event.hasSpaceAvailable:
+            print("has space available")
+        default:
+            print("some other event...")
+            break
+        }
+    }
+    
+    private func readAvailableBytes(stream: InputStream) {
+        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxReadLength)
+        while stream.hasBytesAvailable {
+            let numberOfBytesRead = inputStream.read(buffer, maxLength: maxReadLength)
+            
+            print("read data from chat server!: \(numberOfBytesRead) Bytes")
+
+            if numberOfBytesRead < 0 {
+                if let _ = inputStream.streamError {
+                    break
+                }
+            }
+            
+            // process all of the data from the chat server
+           processDataFromChatServer(buffer: buffer, length: numberOfBytesRead)
+        }
+    }
+    
+    private func processDataFromChatServer(buffer: UnsafeMutablePointer<UInt8>,
+                                           length: Int) {
+        guard length > 0 else {
+            return
+        }
+        let data = Data(bytes: buffer, count: length)
+        if let json = String(data: data, encoding: .utf8) {
+            parseJSONFromServer(json)
+        }
+    }
+    
+}
+

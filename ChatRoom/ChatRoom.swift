@@ -12,10 +12,15 @@ protocol ChatRoomDelegateProtocol {
     func showMessage(_ message: String);
 }
 
-class ChatRoom {
-    var  delegate: ChatRoomDelegateProtocol?
-    
-    init() {
+class ChatRoom : NSObject, StreamDelegate {
+    var delegate: ChatRoomDelegateProtocol?
+    var inputStream: InputStream!
+    var outputStream: OutputStream!
+
+    let chatServerIP = "52.91.109.76"
+    let chatServerPort: UInt32 = 1234
+
+    override init() {
         self.delegate = nil
     }
     
@@ -46,6 +51,29 @@ class ChatRoom {
         parseJSONFromServer(json)
     }
     
+    func setupNetworkCommunication() {
+        var readStream: Unmanaged<CFReadStream>?
+        var writeStream: Unmanaged<CFWriteStream>?
+        
+        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
+                                           chatServerIP as CFString,
+                                           chatServerPort,
+                                           &readStream,
+                                           &writeStream)
+        
+        inputStream = readStream!.takeRetainedValue()
+        outputStream = writeStream!.takeRetainedValue()
+        
+        inputStream.delegate = self
+        outputStream.delegate = self
+        
+        inputStream.schedule(in: .main, forMode: .commonModes)
+        outputStream.schedule(in: .main, forMode: .commonModes)
+        
+        inputStream.open()
+        outputStream.open()
+    }
+
     // Parse JSON from the server 1 object at a time
     func parseJSONFromServer(_ json: String) {
         let formattedJSON = json.replacingOccurrences(of: "'", with: "\"")

@@ -19,12 +19,13 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.chatRoom = ChatRoom()
-        self.chatRoom.delegate = self
+        chatRoom = ChatRoom()
+        chatRoom.delegate = self
+        chatRoom.setupNetworkCommunication()
+        chatRoom.startCheckingReachability()
         
-        self.chatRoom.isChatServerReachable()   // TESING
-        self.chatRoom.startCheckingReachability()
-        self.chatRoom.testMessageJSON()     // TESTING\
+        // TESTING
+        chatRoom.testMessageJSON()
         print("Time is now \(currentTime())")
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)

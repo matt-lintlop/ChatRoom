@@ -25,11 +25,11 @@ class ChatRoom : NSObject, StreamDelegate {
     override init() {
         self.delegate = nil
         self.chatServerReachability = Reachability(hostName: chatServerIP)
-        self.chatServerReachability.startNotifier()
    }
     
     deinit {
         self.chatServerReachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self)
     }
     
     func testMessageJSON() {
@@ -97,7 +97,6 @@ class ChatRoom : NSObject, StreamDelegate {
                 let data = currenJSONItem.data(using: .utf8)
                 if let message = try? JSONDecoder().decode(Message.self, from: data!) {
                     delegate?.showMessage(message.msg)
-                    print("Showing Message: \(message)")
                }
                 currenJSONItem = ""
             }
@@ -105,6 +104,11 @@ class ChatRoom : NSObject, StreamDelegate {
     }
  
     // MARK: Reachability
+    func startCheckingReachability() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(_:)), name: NSNotification.Name.reachabilityChanged, object: nil)
+        self.chatServerReachability.startNotifier()
+   }
+    
     func isChatServerReachable() -> Bool {
         var reachable = false
         switch chatServerReachability.currentReachabilityStatus() {
@@ -121,4 +125,7 @@ class ChatRoom : NSObject, StreamDelegate {
         return reachable
     }
     
+    @objc func reachabilityChanged(_ notification: NSNotification) {
+        let _ = isChatServerReachable()
+    }
 }

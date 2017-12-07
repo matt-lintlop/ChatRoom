@@ -23,6 +23,7 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         self.chatRoom.delegate = self
         
         self.chatRoom.isChatServerReachable()   // TESING
+        self.chatRoom.startCheckingReachability()
         self.chatRoom.testMessageJSON()     // TESTING\
         print("Time is now \(currentTime())")
         

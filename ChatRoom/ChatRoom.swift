@@ -155,7 +155,10 @@ class ChatRoom : NSObject {
     }
     
     @objc func reachabilityChanged(_ notification: NSNotification) {
-        let _ = isChatServerReachable()
+        let reachable = isChatServerReachable()
+        if reachable {
+            downloadMessagesSinceLastTimeConnected();
+        }
     }
     
     // MARK: Sending Messages
@@ -176,6 +179,10 @@ class ChatRoom : NSObject {
     func sendMessage(_ message: Message) -> Bool {
         delegate?.showMessage(message.msg)
         return true
+    }
+    
+    func downloadMessagesSinceLastTimeConnected() {
+        print("Dowloading Messages Since Last Time Connected: \(String(describing: lastTimeConnected))")
     }
     
     // MARK: Outgoing Messages

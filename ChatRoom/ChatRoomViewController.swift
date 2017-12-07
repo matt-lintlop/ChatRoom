@@ -13,6 +13,7 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
     @IBOutlet weak var messagesTextView: UITextView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var messageLabelBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var messageLabelRightConstraint: NSLayoutConstraint!
     
     var chatRoom: ChatRoom!
     
@@ -66,6 +67,7 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         
         UIView.animate(withDuration: 0.5) {
             self.messageLabelBottomConstraint.constant = keyboardSize.size.height + 10
+            self.messageLabelRightConstraint.constant = CGFloat(16)
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
         }
@@ -75,6 +77,7 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
     @objc func keyboardWillHide(notification: NSNotification) {
         UIView.animate(withDuration: 0.5) {
             self.messageLabelBottomConstraint.constant = 10
+            self.messageLabelRightConstraint.constant = CGFloat(90)
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
         }

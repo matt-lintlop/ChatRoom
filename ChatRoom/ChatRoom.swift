@@ -33,8 +33,7 @@ class ChatRoom {
             
             let message2 = try JSONDecoder().decode(Message.self, from: data)
             print("Message 2: \(message2)")
-
-        } catch {
+         } catch {
         }
 
     }

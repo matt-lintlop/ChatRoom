@@ -187,7 +187,6 @@ class ChatRoom : NSObject, StreamDelegate {
                 outputStream.write(u8Ptr, maxLength: data.count)
                 outputStream.write("\n", maxLength: 1)
             }
-            delegate?.showMessage(message.msg)
         } catch {
             print("Error Sending Message: \(error.localizedDescription)")
         }

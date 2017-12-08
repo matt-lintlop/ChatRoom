@@ -186,7 +186,7 @@ class ChatRoom : NSObject {
         }
         textData.withUnsafeBytes { (u8Ptr: UnsafePointer<UInt8>) in
             outputStream.write(u8Ptr, maxLength: text.count)
-            print("Write /(text.count) Bytes To The Output Stream")
+            print("Success! Write \(text.count) Bytes To The Output Stream")
         }
         delegate?.showMessage(message.msg)
         return true

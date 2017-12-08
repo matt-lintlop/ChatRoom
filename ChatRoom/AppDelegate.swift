@@ -15,7 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     weak var chatRoom: ChatRoom?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        // set the navigation bar tine color = clue
+        UINavigationBar.appearance().barTintColor = UIColor.blue
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+
         return true
     }
 

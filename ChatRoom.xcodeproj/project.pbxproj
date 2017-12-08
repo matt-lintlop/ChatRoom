@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34333E3F1FD97C8B00C2BB23 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 34333E3D1FD97C8B00C2BB23 /* Reachability.m */; };
+		34412D0D1FDA2E7400A35D91 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34412D0C1FDA2E7400A35D91 /* History.swift */; };
 		346964501FD89B62000B8EF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3469644F1FD89B62000B8EF0 /* AppDelegate.swift */; };
 		346964521FD89B62000B8EF0 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346964511FD89B62000B8EF0 /* ChatRoomViewController.swift */; };
 		346964551FD89B63000B8EF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 346964531FD89B62000B8EF0 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		34333E3C1FD97C8A00C2BB23 /* MyChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		34333E3D1FD97C8B00C2BB23 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		34333E3E1FD97C8B00C2BB23 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		34412D0C1FDA2E7400A35D91 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		3469644C1FD89B62000B8EF0 /* ChatServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3469644F1FD89B62000B8EF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		346964511FD89B62000B8EF0 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				34333E3D1FD97C8B00C2BB23 /* Reachability.m */,
 				346964531FD89B62000B8EF0 /* Main.storyboard */,
 				34A433411FD8B718003DAA90 /* Message.swift */,
+				34412D0C1FDA2E7400A35D91 /* History.swift */,
 				346964561FD89B63000B8EF0 /* Assets.xcassets */,
 				346964581FD89B63000B8EF0 /* LaunchScreen.storyboard */,
 				3469645B1FD89B63000B8EF0 /* Info.plist */,
@@ -155,6 +158,7 @@
 			files = (
 				346964521FD89B62000B8EF0 /* ChatRoomViewController.swift in Sources */,
 				34A433421FD8B718003DAA90 /* Message.swift in Sources */,
+				34412D0D1FDA2E7400A35D91 /* History.swift in Sources */,
 				346964501FD89B62000B8EF0 /* AppDelegate.swift in Sources */,
 				34D600D51FD8D85F006C68B4 /* ChatRoom.swift in Sources */,
 				34333E3F1FD97C8B00C2BB23 /* Reachability.m in Sources */,

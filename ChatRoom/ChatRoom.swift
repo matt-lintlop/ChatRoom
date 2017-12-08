@@ -177,6 +177,17 @@ class ChatRoom : NSObject {
     }
     
     func sendMessage(_ message: Message) -> Bool {
+        let text = message.msg
+        guard text.count > 0 else {
+            return true
+        }
+        guard let textData = text.data(using: .utf8) else {
+            return false
+        }
+        textData.withUnsafeBytes { (u8Ptr: UnsafePointer<UInt8>) in
+            outputStream.write(u8Ptr, maxLength: text.count)
+            print("Write /(text.count) Bytes To The Output Stream")
+        }
         delegate?.showMessage(message.msg)
         return true
     }

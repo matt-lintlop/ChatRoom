@@ -86,7 +86,6 @@ class ChatRoom : NSObject, StreamDelegate {
         }
         else {
             self.lastTimeConnected = lastTime
-            print("Retrieved Last Time Connected: \(lastTime)")
         }
     }
     
@@ -192,7 +191,6 @@ class ChatRoom : NSObject, StreamDelegate {
     // send a message to the chat server
     func sendMessage(_ message: Message) -> Bool {
         guard (outputStream != nil) && outputStream.hasSpaceAvailable else {
-            print("Messag not sent because no space avialble on output stream")
             return false
         }
 
@@ -220,10 +218,8 @@ class ChatRoom : NSObject, StreamDelegate {
         do {
             let data = try Data(contentsOf: url, options: [])
             self.outgoingMessages = try decoder.decode([Message].self, from: data)
-            print("Loaded \(outgoingMessages!.count) Outgoing Messages From Disk")
-            print("Outgoing Messages: \(outgoingMessages!.debugDescription)")
         } catch {
-            print("Error Loading Outgoing Messages!: \(error.localizedDescription)")
+            // ignore the error
         }
     }
     
@@ -242,7 +238,6 @@ class ChatRoom : NSObject, StreamDelegate {
         do {
             let data = try encoder.encode(outgoingMessages)
             try data.write(to: url, options: [])
-            print("Saved Reservations To Disk: \(outgoingMessages.count)")
         } catch {
             print("Error Saving Outgoing Messages!: \(error.localizedDescription)")
         }
@@ -277,10 +272,7 @@ class ChatRoom : NSObject, StreamDelegate {
             else {
                 self.deleteOutgoingMessages()
             }
-            
-            print("Sent \(sentMessageCount) Outgoing Messages")
-            print("Error Sending \(failedMessageCount) Outgoing Messages")
-        }
+         }
     }
     
     // Add a new outgoing mesage
@@ -316,16 +308,10 @@ class ChatRoom : NSObject, StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case Stream.Event.hasBytesAvailable:
-            print("new message received")
             readAvailableBytes(stream: aStream as! InputStream)
         case Stream.Event.endEncountered:
             stopChatSession()
-        case Stream.Event.errorOccurred:
-            print("error occurred")
-        case Stream.Event.hasSpaceAvailable:
-            print("has space available")
         default:
-            print("some other event...")
             break
         }
     }
@@ -365,13 +351,7 @@ class ChatRoom : NSObject, StreamDelegate {
         guard let lastTimeConnected = lastTimeConnected else {
             return
         }
-        
-        let currentTine = currentTime()
-        print("Current Tine: \(String(describing: currentTime))")
-        print("Last Time Connected: \(String(describing: lastTimeConnected))")
-        let timeSinceLastConnection = (currentTine - lastTimeConnected)/1000
-        print("Time Since Last Time Connected: \(String(describing: timeSinceLastConnection))")
-
+ 
         if lastTimeConnected != 0 {
             let _ = downloadMessagesSinceDate(lastTimeConnected)
             setLastTimeConnectedToNow()

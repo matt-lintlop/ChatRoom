@@ -111,10 +111,12 @@ class ChatRoom : NSObject, StreamDelegate {
             }
             currenJSONItem += String(char)
             if char == "}" {
+                
+                // Decode the current line of JSON
                 let data = currenJSONItem.data(using: .utf8)
                 if let message = try? JSONDecoder().decode(Message.self, from: data!) {
                     delegate?.showMessage(message.msg)
-               }
+                }
                 currenJSONItem = ""
             }
         }
@@ -196,6 +198,7 @@ class ChatRoom : NSObject, StreamDelegate {
             print("Messag not sent because no space avialble on output stream")
             return false
         }
+
         let encoder = JSONEncoder()
         do {
             let data = try encoder.encode(message)
@@ -361,9 +364,7 @@ class ChatRoom : NSObject, StreamDelegate {
     // MARK: Message History
     
     func downloadMessagesSinceLastTimeConnected() {
-        // get time time when last connected to the chat server
         getLastTimeConnected()
-        
         guard let lastTimeConnected = lastTimeConnected else {
             return
         }
@@ -375,7 +376,7 @@ class ChatRoom : NSObject, StreamDelegate {
         print("Time Since Last Time Connected: \(String(describing: timeSinceLastConnection))")
 
         if lastTimeConnected != 0 {
-            let result = downloadMessagesSinceDate(lastTimeConnected)
+            let _ = downloadMessagesSinceDate(lastTimeConnected)
             setLastTimeConnectedToNow()
             return
         }

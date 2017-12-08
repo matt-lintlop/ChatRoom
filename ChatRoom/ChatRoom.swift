@@ -155,7 +155,7 @@ class ChatRoom : NSObject, StreamDelegate {
     @objc func reachabilityChanged(_ notification: NSNotification) {
         let reachable = isChatServerReachable()
         if reachable {
-            downloadMessagesSinceLastTimeConnected();
+            _ = downloadMessagesSinceLastTimeConnected();
         }
     }
     

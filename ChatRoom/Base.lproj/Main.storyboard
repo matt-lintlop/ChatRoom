@@ -46,7 +46,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="57" id="ThE-hg-L5F"/>
                                 </constraints>
-                                <state key="normal" title="Send"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                </state>
                                 <connections>
                                     <action selector="sendPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7j5-xx-Tht"/>
                                 </connections>

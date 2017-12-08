@@ -122,6 +122,7 @@ class ChatRoom : NSObject, StreamDelegate {
             case ReachableViaWiFi,ReachableViaWWAN:
                 reachable = true
                 print("The chat server is Reachable");
+                sendOutgoingMessages()
             case NotReachable:
                 reachable = false
                 print("The chat server is Not Reachable");
@@ -178,6 +179,10 @@ class ChatRoom : NSObject, StreamDelegate {
   
     // send a message to the chat server
     func sendMessage(_ message: Message) -> Bool {
+        guard outputStream.hasSpaceAvailable else {
+            print("Messag not sent because no space avialble on output stream")
+            return false
+        }
         let encoder = JSONEncoder()
         do {
             let data = try encoder.encode(message)

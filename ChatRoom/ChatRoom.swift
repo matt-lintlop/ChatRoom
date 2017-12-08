@@ -253,6 +253,13 @@ class ChatRoom : NSObject, StreamDelegate {
                 }
             }
             self.outgoingMessages = failedMessages
+            if failedMessages.count > 0 {
+                self.saveOutgoingMessages()
+            }
+            else {
+                self.deleteOutgoingMessages()
+            }
+            
             print("Sent \(sentMessageCount) Outgoing Messages")
             print("Error Sending \(failedMessageCount) Outgoing Messages")
         }

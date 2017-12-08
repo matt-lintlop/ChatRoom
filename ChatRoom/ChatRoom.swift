@@ -117,6 +117,9 @@ class ChatRoom : NSObject, StreamDelegate {
                 if let message = try? JSONDecoder().decode(Message.self, from: data!) {
                     delegate?.showMessage(message.msg)
                 }
+                else {
+                    print("Error Parsing Message JSON")
+                }
                 currenJSONItem = ""
             }
         }

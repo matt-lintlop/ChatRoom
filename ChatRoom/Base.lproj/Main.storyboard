@@ -69,7 +69,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Chat Room" largeTitleDisplayMode="always" id="S6R-Z9-eXI"/>
+                    <navigationItem key="navigationItem" title="Tiny Chat" largeTitleDisplayMode="always" id="S6R-Z9-eXI"/>
                     <connections>
                         <outlet property="messageLabelBottomConstraint" destination="FH7-iK-NpO" id="Mqm-Ud-jNE"/>
                         <outlet property="messageLabelRightConstraint" destination="RZo-EP-Wna" id="tqQ-KY-YK4"/>

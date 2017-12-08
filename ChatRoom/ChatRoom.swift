@@ -183,12 +183,9 @@ class ChatRoom : NSObject, StreamDelegate {
             guard let string = String(data: data, encoding: .utf8) else {
                 return false
             }
-            print("Sending String : \(string)")
-
             data.withUnsafeBytes { (u8Ptr: UnsafePointer<UInt8>) in
                 outputStream.write(u8Ptr, maxLength: data.count)
                 outputStream.write("\n", maxLength: 1)
-                print("Success! Write \(data.count+1) Bytes To The Output Stream")
             }
             delegate?.showMessage(message.msg)
         } catch {

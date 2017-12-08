@@ -357,15 +357,22 @@ class ChatRoom : NSObject, StreamDelegate {
         guard let lastTimeConnected = lastTimeConnected else {
             return true
         }
+        
+        let currentTine = currentTime()
+        print("Current Tine: \(String(describing: currentTime))")
+        print("Last Time Connected: \(String(describing: lastTimeConnected))")
+        let timeSinceLastConnection = (currentTine - lastTimeConnected)/1000
+        print("Time Since Last Time Connected: \(String(describing: timeSinceLastConnection))")
+
         if lastTimeConnected != 0 {
-            print("Dowloading Messages Since Last Time Connected: \(String(describing: lastTimeConnected))")
-            return sendGetHistorySinceCommand(lastTimeConnected)
+            let result = sendGetHistorySinceCommand(lastTimeConnected)
+            setLastTimeConnectedToNow()
+            return result
         }
         else {
             return true
         }
     }
-
 
 }
 

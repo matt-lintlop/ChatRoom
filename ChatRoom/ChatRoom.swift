@@ -12,7 +12,7 @@ protocol ChatRoomDelegateProtocol {
     func showMessage(_ message: String);
 }
 
-class ChatRoom : NSObject {
+class ChatRoom : NSObject, StreamDelegate {
     var delegate: ChatRoomDelegateProtocol?             // Chat Room Delegate
     var inputStream: InputStream!                       // Input Stream
     var outputStream: OutputStream!                     // Output Stream
@@ -177,18 +177,22 @@ class ChatRoom : NSObject {
     }
     
     func sendMessage(_ message: Message) -> Bool {
-        let text = message.msg
-        guard text.count > 0 else {
-            return true
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(message)
+            guard let string = String(data: data, encoding: .utf8) else {
+                return false
+            }
+            print("Sending String : \(string)")
+
+            data.withUnsafeBytes { (u8Ptr: UnsafePointer<UInt8>) in
+                outputStream.write(u8Ptr, maxLength: data.count)
+                print("Success! Write \(data.count) Bytes To The Output Stream")
+            }
+            delegate?.showMessage(message.msg)
+        } catch {
+            print("Error Sending Message: \(error.localizedDescription)")
         }
-        guard let textData = text.data(using: .utf8) else {
-            return false
-        }
-        textData.withUnsafeBytes { (u8Ptr: UnsafePointer<UInt8>) in
-            outputStream.write(u8Ptr, maxLength: text.count)
-            print("Success! Write \(text.count) Bytes To The Output Stream")
-        }
-        delegate?.showMessage(message.msg)
         return true
     }
     
@@ -292,9 +296,7 @@ class ChatRoom : NSObject {
         inputStream.close()
         outputStream.close()
     }
-}
-
-extension ChatRoom: StreamDelegate {
+    
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case Stream.Event.hasBytesAvailable:
@@ -318,14 +320,14 @@ extension ChatRoom: StreamDelegate {
             let numberOfBytesRead = inputStream.read(buffer, maxLength: maxReadLength)
             
             print("read data from chat server!: \(numberOfBytesRead) Bytes")
-
+            
             if numberOfBytesRead < 0 {
                 if let _ = inputStream.streamError {
                     break
                 }
             }
             
-           processDataFromChatServer(buffer: buffer, length: numberOfBytesRead)
+            processDataFromChatServer(buffer: buffer, length: numberOfBytesRead)
         }
     }
     
@@ -339,6 +341,6 @@ extension ChatRoom: StreamDelegate {
             parseJSONFromServer(json)
         }
     }
-    
+
 }
 

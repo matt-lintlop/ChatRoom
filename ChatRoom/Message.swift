@@ -24,6 +24,11 @@ struct Message: Codable {
         self.client_time = client_time
         self.server_time = server_time
     }
+    
+    func json() {
+        
+        
+    }
 
 }
 

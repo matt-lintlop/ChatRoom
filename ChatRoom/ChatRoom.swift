@@ -176,13 +176,27 @@ class ChatRoom : NSObject, StreamDelegate {
         }
     }
     
+    func sendGetHistorySince(_ since: Int) -> Bool {
+        var result = true
+        let encoder = JSONEncoder()
+        do {
+            let history = History(since: since)
+            let data = try encoder.encode(history)
+            data.withUnsafeBytes { (u8Ptr: UnsafePointer<UInt8>) in
+                outputStream.write(u8Ptr, maxLength: data.count)
+                outputStream.write("\n", maxLength: 1)
+            }
+        } catch {
+            print("Error Sending Message: \(error.localizedDescription)")
+            result = false
+        }
+        return result
+    }
+  
     func sendMessage(_ message: Message) -> Bool {
         let encoder = JSONEncoder()
         do {
             let data = try encoder.encode(message)
-            guard let string = String(data: data, encoding: .utf8) else {
-                return false
-            }
             data.withUnsafeBytes { (u8Ptr: UnsafePointer<UInt8>) in
                 outputStream.write(u8Ptr, maxLength: data.count)
                 outputStream.write("\n", maxLength: 1)
@@ -192,7 +206,7 @@ class ChatRoom : NSObject, StreamDelegate {
         }
         return true
     }
-    
+
     func downloadMessagesSinceLastTimeConnected() {
         print("Dowloading Messages Since Last Time Connected: \(String(describing: lastTimeConnected))")
     }

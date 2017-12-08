@@ -27,13 +27,17 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         chatRoom.startCheckingReachability()
         if chatRoom.isChatServerReachable() {
             chatRoom.downloadMessagesSinceLastTimeConnected()
-        }
+            chatRoom.sendOutgoingMessages()
+       }
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.handleTextFieldChanged(notification:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
 
         enableSendButton()
+ 
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.chatRoom = chatRoom
     }
     
     override func didReceiveMemoryWarning() {

@@ -13,17 +13,18 @@ protocol ChatRoomDelegateProtocol {
 }
 
 class ChatRoom : NSObject, StreamDelegate {
-    var delegate: ChatRoomDelegateProtocol?             // Chat Room Delegate
-    var inputStream: InputStream!                       // Input Stream
-    var outputStream: OutputStream!                     // Output Stream
-    var chatServerReachability: Reachability            // Chat Server Reachability
-    var outgoingMessages: [Message]?                    // Outgoing Messages
-    var lastTimeConnected: Int?                         // Time Of Last Connection To The Chat Server
+    var delegate: ChatRoomDelegateProtocol?                     // Chat Room Delegate
+    var inputStream: InputStream!                               // Input Stream
+    var outputStream: OutputStream!                             // Output Stream
+    var chatServerReachability: Reachability                    // Chat Server Reachability
+    var outgoingMessages: [Message]?                            // Outgoing Messages
+    var lastTimeConnected: Int?                                 // Time Of Last Connection To The Chat Server
+    var chatServerReachableTimer: Timer?                        // Timer Used To Check For Reachability To Chat Server
 
-    let chatServerIP = "52.91.109.76"                   // Chat Server IP Address
-    let chatServerPort: UInt32 = 1234                   // Chat Server Port
-    let outgoingMessagesDataFileName = "OutgoingMessages.json"
-    let maxReadLength = 1024*4                          // maximum # of bytes read from chat server
+    let chatServerIP = "52.91.109.76"                           // Chat Server IP Address
+    let chatServerPort: UInt32 = 1234                           // Chat Server Port
+    let outgoingMessagesDataFileName = "OutgoingMessages.json"  // Outgoing Message Data File
+    let maxReadLength = 1024*4                                  // Maximum # Of Bytes Read From Chat Server
 
     override init() {
         self.delegate = nil
@@ -33,6 +34,9 @@ class ChatRoom : NSObject, StreamDelegate {
 
         // load outgoing messages that are persisted on disk
         self.loadOutgoingMessages()
+    
+        // start periodic tasks
+        resume()
     }
     
     deinit {
@@ -130,9 +134,9 @@ class ChatRoom : NSObject, StreamDelegate {
     @objc func reachabilityChanged(_ notification: NSNotification) {
         let reachable = isChatServerReachable()
         if reachable {
-            sendOutgoingMessages()
-            downloadMessagesSinceLastTimeConnected();
-        }
+            downloadMessagesSinceLastTimeConnected();     // download all messages since last time connected
+            sendOutgoingMessages()                        // send outgoing messages currently persisted to disk
+       }
     }
     
     // MARK: Sending Messages
@@ -350,6 +354,25 @@ class ChatRoom : NSObject, StreamDelegate {
             return
         }
     }
+    
+    // MARK: Suspend & Resume
+    
+    // supend periodic chat room tasks
+    func suspend() {
+        chatServerReachableTimer?.invalidate()
+        chatServerReachableTimer = nil
+    }
+    
+    // resume periodic chat room tasks
+    func resume() {        
+        chatServerReachableTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(testChatServerReachability), userInfo: nil, repeats: true)
+        chatServerReachableTimer?.fire()
+    }
 
+    @objc func testChatServerReachability() {
+        if self.isChatServerReachable() {
+            self.setLastTimeConnectedToNow()
+        }
+    }
 }
 

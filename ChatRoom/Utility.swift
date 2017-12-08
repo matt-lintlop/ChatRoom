@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // Get the current time as an integer as used my the chat service protocol.
 // Equal to (now.timeIntervalSince1970 * 1000)
@@ -14,5 +15,4 @@ func currentTime() -> Int {
     let now = Date.init(timeIntervalSinceNow: 0)
     return Int(now.timeIntervalSince1970 * 1000)
 }
-
 

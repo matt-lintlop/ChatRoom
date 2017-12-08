@@ -64,6 +64,14 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         sendButton.isEnabled = enabled
      }
     
+    // show an alert when the user sends a message offline
+    func showOfflineMessageSentAlert() {
+        let alertController = UIAlertController(title: "Message Not Sent", message:
+            "Your message was not sent because you are currently offline.", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+
     // MARK: Notifications
     
     @objc func keyboardWillShow(notification: NSNotification) {

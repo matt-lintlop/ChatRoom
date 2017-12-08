@@ -9,7 +9,8 @@
 import Foundation
 
 protocol ChatRoomDelegateProtocol {
-    func showMessage(_ message: String);
+    func showMessage(_ message: String);                        // Show A Message To The User
+    func showOfflineMessageSentAlert();                         // Show Alert When User Sends Message Offfline
 }
 
 class ChatRoom : NSObject, StreamDelegate {
@@ -20,7 +21,7 @@ class ChatRoom : NSObject, StreamDelegate {
     var outgoingMessages: [Message]?                            // Outgoing Messages
     var lastTimeConnected: Int?                                 // Time Of Last Connection To The Chat Server
     var chatServerReachableTimer: Timer?                        // Timer Used To Check For Reachability To Chat Server
-
+    
     let chatServerIP = "52.91.109.76"                           // Chat Server IP Address
     let chatServerPort: UInt32 = 1234                           // Chat Server Port
     let outgoingMessagesDataFileName = "OutgoingMessages.json"  // Outgoing Message Data File
@@ -151,6 +152,9 @@ class ChatRoom : NSObject, StreamDelegate {
         else {
             // the chat server is not reachable. add the message to outgoing messages.
             addOutgoingMessage(newMessage)
+            
+            // show alert to the user taht says the message was not sent.
+            delegate?.showOfflineMessageSentAlert()
         }
     }
     

@@ -26,7 +26,7 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         chatRoom.setupNetworkCommunication()
         chatRoom.startCheckingReachability()
         if chatRoom.isChatServerReachable() {
-            _ = chatRoom.downloadMessagesSinceLastTimeConnected()
+            chatRoom.downloadMessagesSinceLastTimeConnected()
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)

@@ -155,7 +155,8 @@ class ChatRoom : NSObject, StreamDelegate {
     @objc func reachabilityChanged(_ notification: NSNotification) {
         let reachable = isChatServerReachable()
         if reachable {
-            _ = downloadMessagesSinceLastTimeConnected();
+            sendOutgoingMessages()
+            downloadMessagesSinceLastTimeConnected();
         }
     }
     
@@ -268,8 +269,8 @@ class ChatRoom : NSObject, StreamDelegate {
                 }
             }
             self.outgoingMessages = failedMessages
-            print("Sent \(sentMessageCount) Messages")
-            print("Error Sending \(failedMessageCount) Messages")
+            print("Sent \(sentMessageCount) Outgoing Messages")
+            print("Error Sending \(failedMessageCount) Outgoing Messages")
         }
     }
     
@@ -350,12 +351,12 @@ class ChatRoom : NSObject, StreamDelegate {
     
     // MARK: Message History
     
-    func downloadMessagesSinceLastTimeConnected() -> Bool {
+    func downloadMessagesSinceLastTimeConnected() {
         // get time time when last connected to the chat server
         getLastTimeConnected()
         
         guard let lastTimeConnected = lastTimeConnected else {
-            return true
+            return
         }
         
         let currentTine = currentTime()
@@ -367,10 +368,10 @@ class ChatRoom : NSObject, StreamDelegate {
         if lastTimeConnected != 0 {
             let result = sendGetHistorySinceCommand(lastTimeConnected)
             setLastTimeConnectedToNow()
-            return result
+            return
         }
         else {
-            return true
+            return
         }
     }
 

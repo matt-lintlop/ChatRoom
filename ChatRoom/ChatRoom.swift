@@ -40,31 +40,6 @@ class ChatRoom : NSObject, StreamDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func testMessageJSON() {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        
-        let json =  """
-                    {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512609867179}
-                    {'msg':'test','client_time':1512610643732,'server_time':1512610641873}
-                    {'msg':'return error','client_time':1512610681791,'server_time':1512610679920}
-                    {'msg':'give me error','client_time':1512610749697,'server_time':1512610747827}
-                    {'msg':'another try','client_time':1512610766977,'server_time':1512610765107}
-                    {'msg':'queue this up','client_time':1512610994095,'server_time':1512610992393}
-                    {'msg':'queued','client_time':1512611154298,'server_time':1512611152424}
-                    {'msg':'code refactoring','client_time':1512612260099,'server_time':1512612258236}
-                    {'msg':'queuing','client_time':1512612367635,'server_time':1512612365772}
-                    {'msg':'refactoring','client_time':1512612904839,'server_time':1512612902974}
-                    {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512612924827}
-                    {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512612924827}
-                    {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512612932812}
-                    {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512612933477}
-                    {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512612934116}
-                    {'msg':'hello from the other side','client_time':1446754551485,'server_time':1512612934741}
-                    """
-        parseJSONFromServer(json)
-    }
-    
     func setupNetworkCommunication() {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
@@ -175,24 +150,25 @@ class ChatRoom : NSObject, StreamDelegate {
         }
     }
     
-    func sendGetHistorySinceCommand(_ since: Int) -> Bool {
+    // download messages from the chat server after a given date
+    func downloadMessagesSinceDate(_ since: Int) -> Bool {
         var result = true
         let encoder = JSONEncoder()
         do {
             let history = History(since: since)
             let data = try encoder.encode(history)
             data.withUnsafeBytes {  (bytes: UnsafePointer<UInt8>)->Void in
-                print("Bytes: \(bytes.debugDescription)")
                 self.outputStream.write(bytes, maxLength: data.count)
                 self.outputStream.write("\n", maxLength: 1)
             }
         } catch {
-            print("Error Sending Message: \(error.localizedDescription)")
+            print("Error Getting History: \(error.localizedDescription)")
             result = false
         }
         return result
     }
   
+    // send a message to the chat server
     func sendMessage(_ message: Message) -> Bool {
         let encoder = JSONEncoder()
         do {
@@ -366,7 +342,7 @@ class ChatRoom : NSObject, StreamDelegate {
         print("Time Since Last Time Connected: \(String(describing: timeSinceLastConnection))")
 
         if lastTimeConnected != 0 {
-            let result = sendGetHistorySinceCommand(lastTimeConnected)
+            let result = downloadMessagesSinceDate(lastTimeConnected)
             setLastTimeConnectedToNow()
             return
         }

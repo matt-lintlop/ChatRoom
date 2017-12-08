@@ -94,13 +94,10 @@ class ChatRoom : NSObject, StreamDelegate {
         let defaults = UserDefaults()
         let time = currentTime()
         defaults.set(time, forKey: "lastTimeConnected")
-        print("Saved Last Time Connected: \(time)")
     }
     
     // Parse JSON from the server 1 object at a time
     func parseJSONFromServer(_ json: String) {
-        print("Processing JSON from Server:\n\(json)")
-        
         let formattedJSON = json.replacingOccurrences(of: "'", with: "\"")
         var currenJSONItem: String = ""
         var index = 0;
@@ -136,14 +133,11 @@ class ChatRoom : NSObject, StreamDelegate {
         switch chatServerReachability.currentReachabilityStatus() {
             case ReachableViaWiFi,ReachableViaWWAN:
                 reachable = true
-                print("The chat server is Reachable");
                 sendOutgoingMessages()
             case NotReachable:
                 reachable = false
-                print("The chat server is Not Reachable");
             default:
                 reachable = false
-                print("The chat server is Not Reachable");
         }
         return reachable
     }

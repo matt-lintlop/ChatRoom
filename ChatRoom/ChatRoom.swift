@@ -68,6 +68,16 @@ class ChatRoom : NSObject, StreamDelegate {
         outputStream.open()
     }
 
+    func teardownNetworkCommunication() {
+        inputStream.remove(from: .main, forMode: .commonModes)
+        inputStream.close()
+        inputStream = nil
+        
+        outputStream.remove(from: .main, forMode: .commonModes)
+        outputStream.close()
+        outputStream = nil
+    }
+    
     func getLastTimeConnected() {
         let defaults = UserDefaults()
         let lastTime = defaults.integer(forKey: "lastTimeConnected")
@@ -161,6 +171,9 @@ class ChatRoom : NSObject, StreamDelegate {
     
     // download messages from the chat server after a given date
     func downloadMessagesSinceDate(_ since: Int) -> Bool {
+        guard outputStream != nil else {
+            return false
+        }
         var result = true
         let encoder = JSONEncoder()
         do {
@@ -179,7 +192,7 @@ class ChatRoom : NSObject, StreamDelegate {
   
     // send a message to the chat server
     func sendMessage(_ message: Message) -> Bool {
-        guard outputStream.hasSpaceAvailable else {
+        guard (outputStream != nil) && outputStream.hasSpaceAvailable else {
             print("Messag not sent because no space avialble on output stream")
             return false
         }

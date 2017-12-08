@@ -27,11 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // suspend chat room periodic tasks
         chatRoom?.suspend()
+        chatRoom?.teardownNetworkCommunication()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // resume chat room periodic tasks
         chatRoom?.resume()
+        chatRoom?.setupNetworkCommunication()
+
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

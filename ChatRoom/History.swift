@@ -9,7 +9,7 @@
 import Foundation
 
 struct History : Codable {
-    let command = "command"
+    let command = "history"
     var client_time: Int
     var since: Int
     

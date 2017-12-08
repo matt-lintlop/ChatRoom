@@ -33,10 +33,7 @@ class ChatRoom : NSObject, StreamDelegate {
 
         // load outgoing messages that are persisted on disk
         self.loadOutgoingMessages()
-        
-        // get time time when last connecyed to the cat server
-        getLastTimeConnected()
-   }
+    }
     
     deinit {
         self.chatServerReachability.stopNotifier()
@@ -98,6 +95,7 @@ class ChatRoom : NSObject, StreamDelegate {
             setLastTimeConnectedToNow()
         }
         else {
+            self.lastTimeConnected = lastTime
             print("Retrieved Last Time Connected: \(lastTime)")
         }
     }
@@ -111,7 +109,7 @@ class ChatRoom : NSObject, StreamDelegate {
     
     // Parse JSON from the server 1 object at a time
     func parseJSONFromServer(_ json: String) {
-        print("Processing JSON fro Server:\n\(json)")
+        print("Processing JSON from Server:\n\(json)")
         
         let formattedJSON = json.replacingOccurrences(of: "'", with: "\"")
         var currenJSONItem: String = ""
@@ -176,15 +174,16 @@ class ChatRoom : NSObject, StreamDelegate {
         }
     }
     
-    func sendGetHistorySince(_ since: Int) -> Bool {
+    func sendGetHistorySinceCommand(_ since: Int) -> Bool {
         var result = true
         let encoder = JSONEncoder()
         do {
             let history = History(since: since)
             let data = try encoder.encode(history)
-            data.withUnsafeBytes { (u8Ptr: UnsafePointer<UInt8>) in
-                outputStream.write(u8Ptr, maxLength: data.count)
-                outputStream.write("\n", maxLength: 1)
+            data.withUnsafeBytes {  (bytes: UnsafePointer<UInt8>)->Void in
+                print("Bytes: \(bytes.debugDescription)")
+                self.outputStream.write(bytes, maxLength: data.count)
+                self.outputStream.write("\n", maxLength: 1)
             }
         } catch {
             print("Error Sending Message: \(error.localizedDescription)")
@@ -207,10 +206,6 @@ class ChatRoom : NSObject, StreamDelegate {
         return true
     }
 
-    func downloadMessagesSinceLastTimeConnected() {
-        print("Dowloading Messages Since Last Time Connected: \(String(describing: lastTimeConnected))")
-    }
-    
     // MARK: Outgoing Messages
     
     // Load all outgoing messages
@@ -352,6 +347,25 @@ class ChatRoom : NSObject, StreamDelegate {
             parseJSONFromServer(json)
         }
     }
+    
+    // MARK: Message History
+    
+    func downloadMessagesSinceLastTimeConnected() -> Bool {
+        // get time time when last connected to the chat server
+        getLastTimeConnected()
+        
+        guard let lastTimeConnected = lastTimeConnected else {
+            return true
+        }
+        if lastTimeConnected != 0 {
+            print("Dowloading Messages Since Last Time Connected: \(String(describing: lastTimeConnected))")
+            return sendGetHistorySinceCommand(lastTimeConnected)
+        }
+        else {
+            return true
+        }
+    }
+
 
 }
 

@@ -66,8 +66,8 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
     
     // show an alert when the user sends a message offline
     func showOfflineMessageSentAlert() {
-        let alertController = UIAlertController(title: "Message Not Sent", message:
-            "Your message will be sent when you have internet acceess.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "No Internet", message:
+            "Your message will be sent when you are back online.", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }

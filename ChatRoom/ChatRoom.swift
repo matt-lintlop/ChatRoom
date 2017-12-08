@@ -320,9 +320,6 @@ class ChatRoom : NSObject, StreamDelegate {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxReadLength)
         while stream.hasBytesAvailable {
             let numberOfBytesRead = inputStream.read(buffer, maxLength: maxReadLength)
-            
-            print("read data from chat server!: \(numberOfBytesRead) Bytes")
-            
             if numberOfBytesRead < 0 {
                 if let _ = inputStream.streamError {
                     break

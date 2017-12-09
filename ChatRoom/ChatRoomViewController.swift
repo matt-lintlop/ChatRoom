@@ -79,7 +79,7 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
             return
         }
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.25) {
             self.messageLabelBottomConstraint.constant = keyboardSize.size.height + 10
             self.messageLabelRightConstraint.constant = CGFloat(16)
             self.view.setNeedsLayout()
@@ -89,7 +89,7 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.25) {
             self.messageLabelBottomConstraint.constant = 10
             self.messageLabelRightConstraint.constant = CGFloat(90)
             self.view.setNeedsLayout()

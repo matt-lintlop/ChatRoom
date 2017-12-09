@@ -18,7 +18,7 @@
         <!--Chat Room-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Chat Room" id="BYZ-38-t0r" customClass="ChatRoomViewController" customModule="ChatServer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Chat Room" id="BYZ-38-t0r" customClass="ChatRoomViewController" customModule="TinyChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,9 +42,9 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgn-Nq-amW">
-                                <rect key="frame" x="695" y="981" width="57" height="33"/>
+                                <rect key="frame" x="708" y="981" width="44" height="33"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="57" id="ThE-hg-L5F"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="44" id="ThE-hg-L5F"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Send">
@@ -69,7 +69,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Tiny Chat" largeTitleDisplayMode="always" id="S6R-Z9-eXI"/>
+                    <navigationItem key="navigationItem" title="Chat Room" largeTitleDisplayMode="always" id="S6R-Z9-eXI"/>
                     <connections>
                         <outlet property="messageLabelBottomConstraint" destination="FH7-iK-NpO" id="Mqm-Ud-jNE"/>
                         <outlet property="messageLabelRightConstraint" destination="RZo-EP-Wna" id="tqQ-KY-YK4"/>
@@ -91,6 +91,9 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1848358259" green="0.63138068469999997" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

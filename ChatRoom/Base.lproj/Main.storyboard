@@ -69,7 +69,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Chat Room" largeTitleDisplayMode="always" id="S6R-Z9-eXI"/>
+                    <navigationItem key="navigationItem" title="Chat Room" largeTitleDisplayMode="always" id="S6R-Z9-eXI">
+                        <barButtonItem key="rightBarButtonItem" title="Erase" id="OIb-jl-PP4">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="erasePressed:" destination="BYZ-38-t0r" id="lmg-AY-mcs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="messageLabelBottomConstraint" destination="FH7-iK-NpO" id="Mqm-Ud-jNE"/>
                         <outlet property="messageLabelRightConstraint" destination="RZo-EP-Wna" id="tqQ-KY-YK4"/>

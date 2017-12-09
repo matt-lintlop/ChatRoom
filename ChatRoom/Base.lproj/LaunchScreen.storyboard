@@ -64,7 +64,7 @@
                         <viewLayoutGuide key="safeArea" id="z8m-78-d4g"/>
                     </view>
                     <navigationItem key="navigationItem" title="Chat Room" id="ojn-wl-cdC">
-                        <barButtonItem key="rightBarButtonItem" title="Erase" id="UtM-un-5AT">
+                        <barButtonItem key="rightBarButtonItem" image="eraser_icon.png" id="UtM-un-5AT">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
@@ -96,4 +96,7 @@
             <point key="canvasLocation" x="-426" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="eraser_icon.png" width="30" height="30"/>
+    </resources>
 </document>

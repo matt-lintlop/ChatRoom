@@ -16,6 +16,7 @@
 		346964571FD89B63000B8EF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 346964561FD89B63000B8EF0 /* Assets.xcassets */; };
 		3469645A1FD89B63000B8EF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 346964581FD89B63000B8EF0 /* LaunchScreen.storyboard */; };
 		346964621FD8A072000B8EF0 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346964611FD8A072000B8EF0 /* Utility.swift */; };
+		3479F41E1FDC522C00B2DD96 /* eraser_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3479F41D1FDC522C00B2DD96 /* eraser_icon.png */; };
 		34A433421FD8B718003DAA90 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A433411FD8B718003DAA90 /* Message.swift */; };
 		34D600D51FD8D85F006C68B4 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D600D41FD8D85F006C68B4 /* ChatRoom.swift */; };
 		34DD65101FDC25E500334E43 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 34DD650F1FDC25E400334E43 /* icon.png */; };
@@ -36,6 +37,7 @@
 		346964591FD89B63000B8EF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3469645B1FD89B63000B8EF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		346964611FD8A072000B8EF0 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		3479F41D1FDC522C00B2DD96 /* eraser_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eraser_icon.png; sourceTree = "<group>"; };
 		34A433411FD8B718003DAA90 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		34D600D41FD8D85F006C68B4 /* ChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		34DD650F1FDC25E400334E43 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				34A433411FD8B718003DAA90 /* Message.swift */,
 				34412D0C1FDA2E7400A35D91 /* History.swift */,
 				34DD650F1FDC25E400334E43 /* icon.png */,
+				3479F41D1FDC522C00B2DD96 /* eraser_icon.png */,
 				346964531FD89B62000B8EF0 /* Main.storyboard */,
 				346964561FD89B63000B8EF0 /* Assets.xcassets */,
 				346964581FD89B63000B8EF0 /* LaunchScreen.storyboard */,
@@ -154,6 +157,7 @@
 				34DD65101FDC25E500334E43 /* icon.png in Resources */,
 				3469645A1FD89B63000B8EF0 /* LaunchScreen.storyboard in Resources */,
 				346964571FD89B63000B8EF0 /* Assets.xcassets in Resources */,
+				3479F41E1FDC522C00B2DD96 /* eraser_icon.png in Resources */,
 				346964551FD89B63000B8EF0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

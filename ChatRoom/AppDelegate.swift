@@ -18,7 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        
+        // TESTING to Retrieve A Few Hours Of Messages
+        let time = currentTime() - Int(3 * 60 * 60 * 1000)      // 3 hours
+        chatRoom?.downloadMessagesSinceDate(time)
 
+        
+        
         return true
     }
 

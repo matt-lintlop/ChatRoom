@@ -37,7 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // resume chat room periodic tasks
         chatRoom?.resume()
         chatRoom?.setupNetworkCommunication()
-
+        
+        // download all messages since we disconnected when the app went to the background
+        chatRoom?.downloadMessagesSinceLastTimeDisconnected()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

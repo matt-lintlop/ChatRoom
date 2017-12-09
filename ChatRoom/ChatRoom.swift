@@ -20,7 +20,8 @@ class ChatRoom : NSObject, StreamDelegate {
     var chatServerReachability: Reachability                    // Chat Server Reachability
     var outgoingMessages: [Message]?                            // Outgoing Messages
     var lastTimeConnected: Int?                                 // Time Of Last Connection To The Chat Server
-    var chatServerReachableTimer: Timer?                        // Timer Used To Check For Reachability To Chat Server
+    var lastTimeDisconnected: Int?                              // Time Of Last Disconnect From The Chat Server
+   var chatServerReachableTimer: Timer?                        // Timer Used To Check For Reachability To Chat Server
     
     let chatServerIP = "52.91.109.76"                           // Chat Server IP Address
     let chatServerPort: UInt32 = 1234                           // Chat Server Port
@@ -67,7 +68,7 @@ class ChatRoom : NSObject, StreamDelegate {
         inputStream.open()
         outputStream.open()
     }
-
+    
     func teardownNetworkCommunication() {
         inputStream.remove(from: .main, forMode: .commonModes)
         inputStream.close()
@@ -76,7 +77,9 @@ class ChatRoom : NSObject, StreamDelegate {
         outputStream.remove(from: .main, forMode: .commonModes)
         outputStream.close()
         outputStream = nil
-    }
+ 
+        self.lastTimeDisconnected = currentTime()
+}
     
     func getLastTimeConnected() {
         let defaults = UserDefaults()
@@ -359,6 +362,15 @@ class ChatRoom : NSObject, StreamDelegate {
         }
     }
     
+    func downloadMessagesSinceLastTimeDisconnected() {
+        guard let lastTimeDisconnected = self.lastTimeDisconnected else {
+            return
+        }
+        if lastTimeDisconnected != 0 {
+            let _ = downloadMessagesSinceDate(lastTimeDisconnected)
+        }
+    }
+
     // MARK: Suspend & Resume
     
     // supend periodic chat room tasks

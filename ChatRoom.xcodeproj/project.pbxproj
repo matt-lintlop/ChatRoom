@@ -26,7 +26,7 @@
 		34333E3D1FD97C8B00C2BB23 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		34333E3E1FD97C8B00C2BB23 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		34412D0C1FDA2E7400A35D91 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
-		3469644C1FD89B62000B8EF0 /* TinyChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3469644C1FD89B62000B8EF0 /* ChatRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3469644F1FD89B62000B8EF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		346964511FD89B62000B8EF0 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		346964541FD89B62000B8EF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		3469644D1FD89B62000B8EF0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3469644C1FD89B62000B8EF0 /* TinyChat.app */,
+				3469644C1FD89B62000B8EF0 /* ChatRoom.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,7 +106,7 @@
 			);
 			name = MyChat;
 			productName = MyChat;
-			productReference = 3469644C1FD89B62000B8EF0 /* TinyChat.app */;
+			productReference = 3469644C1FD89B62000B8EF0 /* ChatRoom.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -313,7 +313,7 @@
 				INFOPLIST_FILE = ChatRoom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.opengarden.ChatRoom;
-				PRODUCT_NAME = TinyChat;
+				PRODUCT_NAME = ChatRoom;
 				SWIFT_OBJC_BRIDGING_HEADER = "ChatRoom/MyChat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -331,7 +331,7 @@
 				INFOPLIST_FILE = ChatRoom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.opengarden.ChatRoom;
-				PRODUCT_NAME = TinyChat;
+				PRODUCT_NAME = ChatRoom;
 				SWIFT_OBJC_BRIDGING_HEADER = "ChatRoom/MyChat-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

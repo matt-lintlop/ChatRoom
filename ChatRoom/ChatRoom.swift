@@ -199,6 +199,7 @@ class ChatRoom : NSObject, StreamDelegate {
     // send a message to the chat server
     func sendMessage(_ message: Message) -> Bool {
         guard (outputStream != nil) && outputStream.hasSpaceAvailable else {
+            print("ERROR: Output Has No Space Available!")
             return false
         }
 
@@ -319,6 +320,8 @@ class ChatRoom : NSObject, StreamDelegate {
             readAvailableBytes(stream: aStream as! InputStream)
         case Stream.Event.endEncountered:
             stopChatSession()
+        case Stream.Event.hasSpaceAvailable:
+            sendOutgoingMessages()
         default:
             break
         }

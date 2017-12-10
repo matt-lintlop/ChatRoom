@@ -141,7 +141,6 @@ class ChatRoom : NSObject, StreamDelegate {
         switch chatServerReachability.currentReachabilityStatus() {
             case ReachableViaWiFi,ReachableViaWWAN:
                 reachable = true
-                sendOutgoingMessages()
             case NotReachable:
                 reachable = false
             default:

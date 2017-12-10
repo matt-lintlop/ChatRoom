@@ -101,9 +101,9 @@ class ChatRoom : NSObject, StreamDelegate {
     // Parse JSON from the server 1 object at a time
     func parseJSONFromServer(_ json: String) {
         
-        print("*****************************************************")
-        print("JSON From Server = \(json)")
-        print("*****************************************************")
+//        print("*****************************************************")
+//        print("JSON From Server = \(json)")
+//        print("*****************************************************")
 
         let formattedJSON = json.replacingOccurrences(of: "'", with: "\"")
         var currenJSONItem: String = ""
@@ -121,8 +121,8 @@ class ChatRoom : NSObject, StreamDelegate {
                 if let message = try? JSONDecoder().decode(Message.self, from: data!) {
                     delegate?.showMessage(message.msg)
                 }
-                else {
-                    print("Error Parsing Message JSON")
+//                else {
+//                    print("Error Parsing Message JSON: \(currenJSONItem)")
                 }
                 currenJSONItem = ""
             }

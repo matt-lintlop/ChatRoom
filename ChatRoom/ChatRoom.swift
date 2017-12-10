@@ -153,7 +153,6 @@ class ChatRoom : NSObject, StreamDelegate {
         let reachable = isChatServerReachable()
         if reachable {
             downloadMessagesSinceLastTimeConnected();     // download all messages since last time connected
-            sendOutgoingMessages()                        // send outgoing messages currently persisted to disk
        }
     }
     
@@ -321,8 +320,12 @@ class ChatRoom : NSObject, StreamDelegate {
         case Stream.Event.endEncountered:
             stopChatSession()
         case Stream.Event.hasSpaceAvailable:
-            sendOutgoingMessages()
-        default:
+            if let outgoingMessages = self.outgoingMessages {
+                if outgoingMessages.count > 0 {
+                    sendOutgoingMessages()
+                }
+            }
+         default:
             break
         }
     }

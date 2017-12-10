@@ -26,7 +26,7 @@ class ChatRoom : NSObject, StreamDelegate {
     let chatServerIP = "52.91.109.76"                           // Chat Server IP Address
     let chatServerPort: UInt32 = 1234                           // Chat Server Port
     let outgoingMessagesDataFileName = "OutgoingMessages.json"  // Outgoing Message Data File
-    let maxReadLength = 1024*4                                  // Maximum # Of Bytes Read From Chat Server
+    let maxReadLength = 1024                                    // Maximum # Of Bytes Read From Chat Server
 
     override init() {
         self.delegate = nil
@@ -101,9 +101,9 @@ class ChatRoom : NSObject, StreamDelegate {
     // Parse JSON from the server 1 object at a time
     func parseJSONFromServer(_ json: String) {
         
-//        print("*****************************************************")
-//        print("JSON From Server = \(json)")
-//        print("*****************************************************")
+        print("*****************************************************")
+        print("JSON From Server = \(json)")
+        print("*****************************************************")
 
         let formattedJSON = json.replacingOccurrences(of: "'", with: "\"")
         var currenJSONItem: String = ""
@@ -118,14 +118,15 @@ class ChatRoom : NSObject, StreamDelegate {
                 
                 // Decode the current line of JSON
                 let data = currenJSONItem.data(using: .utf8)
+                
                 if let message = try? JSONDecoder().decode(Message.self, from: data!) {
                     delegate?.showMessage(message.msg)
                 }
-//                else {
-//                    print("Error Parsing Message JSON: \(currenJSONItem)")
-//                }
+                else {
+                    print("Error Decoding Message JSON: \(currenJSONItem)")
+                }
                 currenJSONItem = ""
-            }
+             }
         }
     }
  
@@ -327,7 +328,7 @@ class ChatRoom : NSObject, StreamDelegate {
     private func readAvailableBytes(stream: InputStream) {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxReadLength)
         while stream.hasBytesAvailable {
-            let numberOfBytesRead = inputStream.read(buffer, maxLength: maxReadLength)
+            let numberOfBytesRead = inputStream.read(buffer, maxLength: maxReadLength-10)
             if numberOfBytesRead < 0 {
                 if let _ = inputStream.streamError {
                     break

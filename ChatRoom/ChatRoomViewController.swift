@@ -37,7 +37,7 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.keyboardDidChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
         enableSendButton()
         
-        let time = currentTime() - (1000 * 60 * 60 * 24 * 3)  // past 3 days
+        let time = currentTime() - Int(3 * 60 * 60 * 1000)      // 10 hours
         chatRoom.downloadMessagesSinceDate(time)                // TESTING
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

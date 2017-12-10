@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3424145E1FDB665F004335D2 /* ChatClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3424145D1FDB665F004335D2 /* ChatClient.m */; };
 		34333E3F1FD97C8B00C2BB23 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 34333E3D1FD97C8B00C2BB23 /* Reachability.m */; };
 		34412D0D1FDA2E7400A35D91 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34412D0C1FDA2E7400A35D91 /* History.swift */; };
 		346964501FD89B62000B8EF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3469644F1FD89B62000B8EF0 /* AppDelegate.swift */; };
@@ -23,8 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3424145C1FDB665F004335D2 /* ChatClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatClient.h; sourceTree = "<group>"; };
-		3424145D1FDB665F004335D2 /* ChatClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatClient.m; sourceTree = "<group>"; };
 		34333E3C1FD97C8A00C2BB23 /* MyChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		34333E3D1FD97C8B00C2BB23 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		34333E3E1FD97C8B00C2BB23 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -76,8 +73,6 @@
 				3469644F1FD89B62000B8EF0 /* AppDelegate.swift */,
 				346964511FD89B62000B8EF0 /* ChatRoomViewController.swift */,
 				34D600D41FD8D85F006C68B4 /* ChatRoom.swift */,
-				3424145C1FDB665F004335D2 /* ChatClient.h */,
-				3424145D1FDB665F004335D2 /* ChatClient.m */,
 				346964611FD8A072000B8EF0 /* Utility.swift */,
 				34333E3E1FD97C8B00C2BB23 /* Reachability.h */,
 				34333E3D1FD97C8B00C2BB23 /* Reachability.m */,
@@ -175,7 +170,6 @@
 				346964501FD89B62000B8EF0 /* AppDelegate.swift in Sources */,
 				34D600D51FD8D85F006C68B4 /* ChatRoom.swift in Sources */,
 				34333E3F1FD97C8B00C2BB23 /* Reachability.m in Sources */,
-				3424145E1FDB665F004335D2 /* ChatClient.m in Sources */,
 				346964621FD8A072000B8EF0 /* Utility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

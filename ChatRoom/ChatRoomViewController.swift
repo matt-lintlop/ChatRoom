@@ -37,7 +37,7 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.keyboardDidChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
         enableSendButton()
         
-        let time = currentTime() - Int(3 * 60 * 60 * 1000)      // 10 hours
+        let time = currentTime() - Int(5 * 60 * 60 * 1000)      // 5 hours
         chatRoom.downloadMessagesSinceDate(time)                // TESTING
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -134,13 +134,22 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         }
         if Thread.current.isMainThread {
             messagesTextView.text.append("\(message)\r")
-            self.messagesTextView.scrollRangeToVisible(NSRange(location: 0, length: self.messagesTextView.text.count))
+            scrollTextViewToBottom()
        }
         else {
             DispatchQueue.main.async(execute: {
                 self.messagesTextView.text.append("\(message)\r")
-                self.messagesTextView.scrollRangeToVisible(NSRange(location: 0, length: self.messagesTextView.text.count))
+                self.scrollTextViewToBottom()
            })
+        }
+    }
+    
+    func scrollTextViewToBottom() {
+        if (messagesTextView.contentOffset.y >= messagesTextView.contentSize.height - messagesTextView.frame.size.height) {
+        }
+        else {
+            let contentOffset = CGPoint(x: messagesTextView.contentOffset.x, y: messagesTextView.contentSize.height - messagesTextView.frame.size.height)
+            messagesTextView.setContentOffset(contentOffset, animated: true)
         }
     }
     

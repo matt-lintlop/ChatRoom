@@ -123,7 +123,7 @@ class ChatRoom : NSObject, StreamDelegate {
                 }
 //                else {
 //                    print("Error Parsing Message JSON: \(currenJSONItem)")
-                }
+//                }
                 currenJSONItem = ""
             }
         }

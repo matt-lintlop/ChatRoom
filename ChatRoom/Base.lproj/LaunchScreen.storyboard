@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vcV-mz-nGv">
-    <device id="ipad9_7" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,53 +19,55 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController title="Tiny Chat" id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pEE-By-TG4">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                    <view key="view" contentMode="scaleToFill" id="gNQ-Mw-0nE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qOf-Cw-CWH">
-                                <rect key="frame" x="16" y="80" width="736" height="894"/>
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yzj-OF-7qY">
+                                <rect key="frame" x="16" y="80" width="343" height="537"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say something nice" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2IK-KA-5IR">
-                                <rect key="frame" x="16" y="984" width="667" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say something nice" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Nv-ov-FcW">
+                                <rect key="frame" x="16" y="627" width="274" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="4Ff-Ii-mnD"/>
+                                    <constraint firstAttribute="height" constant="30" id="gip-zf-QuM"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHZ-jr-mGx">
-                                <rect key="frame" x="699" y="981" width="44" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcq-5N-STG">
+                                <rect key="frame" x="308" y="627" width="42" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="44" id="EHG-Rs-ShH"/>
+                                    <constraint firstAttribute="width" constant="42" identifier="sendWidth" id="0sM-7f-HmP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Send">
-                                    <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1848358259" green="0.63138068469999997" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="2IK-KA-5IR" firstAttribute="top" secondItem="qOf-Cw-CWH" secondAttribute="bottom" constant="10" id="3Us-Tp-YOX"/>
-                            <constraint firstItem="qOf-Cw-CWH" firstAttribute="top" secondItem="sHM-Yf-gAP" secondAttribute="top" constant="16" id="8Aa-Mx-emN"/>
-                            <constraint firstItem="sHM-Yf-gAP" firstAttribute="bottom" secondItem="wHZ-jr-mGx" secondAttribute="bottom" constant="10" id="GgD-oX-zsv"/>
-                            <constraint firstItem="sHM-Yf-gAP" firstAttribute="trailing" secondItem="2IK-KA-5IR" secondAttribute="trailing" constant="85" id="QWB-2o-hy1"/>
-                            <constraint firstItem="qOf-Cw-CWH" firstAttribute="leading" secondItem="sHM-Yf-gAP" secondAttribute="leading" constant="16" id="SHC-t0-efr"/>
-                            <constraint firstItem="2IK-KA-5IR" firstAttribute="leading" secondItem="sHM-Yf-gAP" secondAttribute="leading" constant="16" id="THK-0Q-CnJ"/>
-                            <constraint firstItem="sHM-Yf-gAP" firstAttribute="trailing" secondItem="wHZ-jr-mGx" secondAttribute="trailing" constant="25" id="Uyq-Lg-Bex"/>
-                            <constraint firstItem="sHM-Yf-gAP" firstAttribute="trailing" secondItem="qOf-Cw-CWH" secondAttribute="trailing" constant="16" id="ZCm-5W-dYR"/>
-                            <constraint firstItem="sHM-Yf-gAP" firstAttribute="bottom" secondItem="2IK-KA-5IR" secondAttribute="bottom" constant="10" id="gIS-xs-g7g"/>
+                            <constraint firstItem="Dzs-FV-wrv" firstAttribute="bottom" secondItem="bcq-5N-STG" secondAttribute="bottom" constant="10" id="2o3-KP-tao"/>
+                            <constraint firstItem="Dzs-FV-wrv" firstAttribute="trailing" secondItem="2Nv-ov-FcW" secondAttribute="trailing" constant="85" id="8gc-ZR-mpn"/>
+                            <constraint firstItem="Dzs-FV-wrv" firstAttribute="trailing" secondItem="bcq-5N-STG" secondAttribute="trailing" constant="25" id="AFG-0r-xrx"/>
+                            <constraint firstItem="yzj-OF-7qY" firstAttribute="leading" secondItem="Dzs-FV-wrv" secondAttribute="leading" constant="16" identifier="textViewLeft" id="AQ5-jq-zEy"/>
+                            <constraint firstItem="2Nv-ov-FcW" firstAttribute="height" secondItem="bcq-5N-STG" secondAttribute="height" identifier="messageHeight" id="PDf-cW-360"/>
+                            <constraint firstItem="Dzs-FV-wrv" firstAttribute="bottom" secondItem="2Nv-ov-FcW" secondAttribute="bottom" constant="10" identifier="messageBottom" id="Qym-8Z-a4b"/>
+                            <constraint firstItem="Dzs-FV-wrv" firstAttribute="trailing" secondItem="yzj-OF-7qY" secondAttribute="trailing" constant="16" id="ZqG-C8-r3d"/>
+                            <constraint firstItem="2Nv-ov-FcW" firstAttribute="leading" secondItem="Dzs-FV-wrv" secondAttribute="leading" constant="16" identifier="messageLeft" id="fJR-0t-Ytu"/>
+                            <constraint firstItem="yzj-OF-7qY" firstAttribute="top" secondItem="Dzs-FV-wrv" secondAttribute="top" constant="16" identifier="textViewTop" id="rZB-Go-Zx6"/>
+                            <constraint firstItem="2Nv-ov-FcW" firstAttribute="top" secondItem="yzj-OF-7qY" secondAttribute="bottom" constant="10" identifier="messageTop" id="u4x-hs-nFQ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="sHM-Yf-gAP"/>
+                        <viewLayoutGuide key="safeArea" id="Dzs-FV-wrv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Chat Room" id="ojn-wl-cdC">
-                        <barButtonItem key="rightBarButtonItem" image="eraser_icon.png" id="UtM-un-5AT">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <navigationItem key="navigationItem" title="Tiny Chat" id="ojn-wl-cdC">
+                        <barButtonItem key="rightBarButtonItem" image="eraser_icon" id="oxR-Mj-st0">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -79,11 +81,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vcV-mz-nGv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cIl-jH-Qov">
-                        <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.1848358259" green="0.63138068469999997" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.16101640462875366" green="0.72294765710830688" blue="0.98709827661514282" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -97,6 +99,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="eraser_icon.png" width="30" height="30"/>
+        <image name="eraser_icon" width="27" height="27"/>
     </resources>
 </document>

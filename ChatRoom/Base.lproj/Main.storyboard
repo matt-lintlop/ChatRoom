@@ -18,7 +18,7 @@
         <!--Chat Room-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Chat Room" id="BYZ-38-t0r" customClass="TinyChatRoomViewController" customModule="TinyChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Chat Room" id="BYZ-38-t0r" customClass="ChatRoomViewController" customModule="ChatRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +71,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Tiny Chat" largeTitleDisplayMode="always" id="S6R-Z9-eXI">
+                    <navigationItem key="navigationItem" title="Chat Room" largeTitleDisplayMode="always" id="S6R-Z9-eXI">
                         <barButtonItem key="rightBarButtonItem" image="eraser_icon.png" id="XdN-VM-W0p">
                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>

@@ -65,7 +65,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dzs-FV-wrv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Tiny Chat" id="ojn-wl-cdC">
+                    <navigationItem key="navigationItem" title="Chat Room" id="ojn-wl-cdC">
                         <barButtonItem key="rightBarButtonItem" image="eraser_icon" id="oxR-Mj-st0">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>

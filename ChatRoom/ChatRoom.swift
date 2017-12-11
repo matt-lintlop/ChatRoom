@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ChatRoomDelegateProtocol {
     func showMessage(_ message: String);                        // Show A Message To The User
@@ -50,6 +51,8 @@ class ChatRoom : NSObject, StreamDelegate {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
         
+        setActivityInditcatorVisible(true)
+
         CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
                                            chatServerIP as CFString,
                                            chatServerPort,
@@ -67,7 +70,9 @@ class ChatRoom : NSObject, StreamDelegate {
         
         inputStream.open()
         outputStream.open()
-    }
+ 
+        setActivityInditcatorVisible(false)
+}
     
     func teardownNetworkCommunication() {
         inputStream.remove(from: .main, forMode: .commonModes)
@@ -316,14 +321,20 @@ class ChatRoom : NSObject, StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case Stream.Event.hasBytesAvailable:
+            setActivityInditcatorVisible(true)
             readAvailableBytes(stream: aStream as! InputStream)
-        case Stream.Event.endEncountered:
+            setActivityInditcatorVisible(false)
+            
+       case Stream.Event.endEncountered:
             stopChatSession()
+            
         case Stream.Event.hasSpaceAvailable:
             if let outgoingMessages = self.outgoingMessages {
                 if outgoingMessages.count > 0 {
+                    setActivityInditcatorVisible(true)
                     sendOutgoingMessages()
-                }
+                    setActivityInditcatorVisible(false)
+               }
             }
          default:
             break

@@ -12,13 +12,17 @@
 		346964501FD89B62000B8EF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3469644F1FD89B62000B8EF0 /* AppDelegate.swift */; };
 		346964521FD89B62000B8EF0 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346964511FD89B62000B8EF0 /* ChatRoomViewController.swift */; };
 		346964551FD89B63000B8EF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 346964531FD89B62000B8EF0 /* Main.storyboard */; };
-		346964571FD89B63000B8EF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 346964561FD89B63000B8EF0 /* Assets.xcassets */; };
 		3469645A1FD89B63000B8EF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 346964581FD89B63000B8EF0 /* LaunchScreen.storyboard */; };
 		346964621FD8A072000B8EF0 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346964611FD8A072000B8EF0 /* Utility.swift */; };
-		3479F41E1FDC522C00B2DD96 /* eraser_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3479F41D1FDC522C00B2DD96 /* eraser_icon.png */; };
 		34A433421FD8B718003DAA90 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A433411FD8B718003DAA90 /* Message.swift */; };
 		34D600D51FD8D85F006C68B4 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D600D41FD8D85F006C68B4 /* ChatRoom.swift */; };
-		34DD65101FDC25E500334E43 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 34DD650F1FDC25E400334E43 /* icon.png */; };
+		34F594B01FDE3F82007FDFF1 /* eraser_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F594A91FDE3F81007FDFF1 /* eraser_icon@3x.png */; };
+		34F594B11FDE3F82007FDFF1 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F594AA1FDE3F81007FDFF1 /* icon.png */; };
+		34F594B21FDE3F82007FDFF1 /* eraser_icon@2x..png in Resources */ = {isa = PBXBuildFile; fileRef = 34F594AB1FDE3F81007FDFF1 /* eraser_icon@2x..png */; };
+		34F594B31FDE3F82007FDFF1 /* eraser_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F594AC1FDE3F81007FDFF1 /* eraser_icon.png */; };
+		34F594B41FDE3F82007FDFF1 /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F594AD1FDE3F82007FDFF1 /* icon@3x.png */; };
+		34F594B51FDE3F82007FDFF1 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F594AE1FDE3F82007FDFF1 /* icon@2x.png */; };
+		34F594B61FDE3F82007FDFF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34F594AF1FDE3F82007FDFF1 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,14 +34,18 @@
 		3469644F1FD89B62000B8EF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		346964511FD89B62000B8EF0 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		346964541FD89B62000B8EF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		346964561FD89B63000B8EF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		346964591FD89B63000B8EF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3469645B1FD89B63000B8EF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		346964611FD8A072000B8EF0 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		3479F41D1FDC522C00B2DD96 /* eraser_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eraser_icon.png; sourceTree = "<group>"; };
 		34A433411FD8B718003DAA90 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		34D600D41FD8D85F006C68B4 /* ChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
-		34DD650F1FDC25E400334E43 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		34F594A91FDE3F81007FDFF1 /* eraser_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eraser_icon@3x.png"; sourceTree = "<group>"; };
+		34F594AA1FDE3F81007FDFF1 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = "../../../../Desktop/NEW!/icon.png"; sourceTree = "<group>"; };
+		34F594AB1FDE3F81007FDFF1 /* eraser_icon@2x..png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eraser_icon@2x..png"; sourceTree = "<group>"; };
+		34F594AC1FDE3F81007FDFF1 /* eraser_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = eraser_icon.png; path = "../../../../Desktop/NEW!/eraser_icon.png"; sourceTree = "<group>"; };
+		34F594AD1FDE3F82007FDFF1 /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
+		34F594AE1FDE3F82007FDFF1 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		34F594AF1FDE3F82007FDFF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Desktop/NEW!/Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +86,15 @@
 				34333E3D1FD97C8B00C2BB23 /* Reachability.m */,
 				34A433411FD8B718003DAA90 /* Message.swift */,
 				34412D0C1FDA2E7400A35D91 /* History.swift */,
-				34DD650F1FDC25E400334E43 /* icon.png */,
-				3479F41D1FDC522C00B2DD96 /* eraser_icon.png */,
 				346964531FD89B62000B8EF0 /* Main.storyboard */,
-				346964561FD89B63000B8EF0 /* Assets.xcassets */,
 				346964581FD89B63000B8EF0 /* LaunchScreen.storyboard */,
+				34F594AF1FDE3F82007FDFF1 /* Assets.xcassets */,
+				34F594AC1FDE3F81007FDFF1 /* eraser_icon.png */,
+				34F594AB1FDE3F81007FDFF1 /* eraser_icon@2x..png */,
+				34F594A91FDE3F81007FDFF1 /* eraser_icon@3x.png */,
+				34F594AA1FDE3F81007FDFF1 /* icon.png */,
+				34F594AE1FDE3F82007FDFF1 /* icon@2x.png */,
+				34F594AD1FDE3F82007FDFF1 /* icon@3x.png */,
 				3469645B1FD89B63000B8EF0 /* Info.plist */,
 				34333E3C1FD97C8A00C2BB23 /* MyChat-Bridging-Header.h */,
 			);
@@ -149,11 +161,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34DD65101FDC25E500334E43 /* icon.png in Resources */,
+				34F594B11FDE3F82007FDFF1 /* icon.png in Resources */,
+				34F594B51FDE3F82007FDFF1 /* icon@2x.png in Resources */,
+				34F594B41FDE3F82007FDFF1 /* icon@3x.png in Resources */,
 				3469645A1FD89B63000B8EF0 /* LaunchScreen.storyboard in Resources */,
-				346964571FD89B63000B8EF0 /* Assets.xcassets in Resources */,
-				3479F41E1FDC522C00B2DD96 /* eraser_icon.png in Resources */,
+				34F594B31FDE3F82007FDFF1 /* eraser_icon.png in Resources */,
+				34F594B01FDE3F82007FDFF1 /* eraser_icon@3x.png in Resources */,
 				346964551FD89B63000B8EF0 /* Main.storyboard in Resources */,
+				34F594B61FDE3F82007FDFF1 /* Assets.xcassets in Resources */,
+				34F594B21FDE3F82007FDFF1 /* eraser_icon@2x..png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

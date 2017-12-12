@@ -188,6 +188,10 @@ class ChatRoom : NSObject, StreamDelegate {
         guard outputStream != nil else {
             return false
         }
+        
+        let elapsedSecs = (currentTime() - since)/1000
+        print("Downloading Messages Since: \(since) : Elapsed \(elapsedSecs) Seconds")
+        
         var result = true
         let encoder = JSONEncoder()
         do {

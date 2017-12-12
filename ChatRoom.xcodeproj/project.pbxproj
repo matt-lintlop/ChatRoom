@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		34333E3F1FD97C8B00C2BB23 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 34333E3D1FD97C8B00C2BB23 /* Reachability.m */; };
+		343CF8881FE03FBC0041062D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343CF8871FE03FBC0041062D /* Assets.xcassets */; };
 		34412D0D1FDA2E7400A35D91 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34412D0C1FDA2E7400A35D91 /* History.swift */; };
-		345307351FDE4BE700DEF70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3453072D1FDE4BE700DEF70F /* Assets.xcassets */; };
 		346964501FD89B62000B8EF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3469644F1FD89B62000B8EF0 /* AppDelegate.swift */; };
 		346964521FD89B62000B8EF0 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346964511FD89B62000B8EF0 /* ChatRoomViewController.swift */; };
 		346964551FD89B63000B8EF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 346964531FD89B62000B8EF0 /* Main.storyboard */; };
@@ -24,8 +24,8 @@
 		34333E3D1FD97C8B00C2BB23 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		34333E3E1FD97C8B00C2BB23 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		343CF8851FE023360041062D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		343CF8871FE03FBC0041062D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../TinyChat/TinyChat/Assets.xcassets; sourceTree = "<group>"; };
 		34412D0C1FDA2E7400A35D91 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
-		3453072D1FDE4BE700DEF70F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3469644C1FD89B62000B8EF0 /* ChatRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3469644F1FD89B62000B8EF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		346964511FD89B62000B8EF0 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
@@ -75,9 +75,9 @@
 				34A433411FD8B718003DAA90 /* Message.swift */,
 				34412D0C1FDA2E7400A35D91 /* History.swift */,
 				346964531FD89B62000B8EF0 /* Main.storyboard */,
+				343CF8871FE03FBC0041062D /* Assets.xcassets */,
 				346964581FD89B63000B8EF0 /* LaunchScreen.storyboard */,
 				343CF8851FE023360041062D /* Info.plist */,
-				3453072D1FDE4BE700DEF70F /* Assets.xcassets */,
 				34333E3C1FD97C8A00C2BB23 /* MyChat-Bridging-Header.h */,
 			);
 			path = ChatRoom;
@@ -143,8 +143,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				345307351FDE4BE700DEF70F /* Assets.xcassets in Resources */,
 				3469645A1FD89B63000B8EF0 /* LaunchScreen.storyboard in Resources */,
+				343CF8881FE03FBC0041062D /* Assets.xcassets in Resources */,
 				346964551FD89B63000B8EF0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -169,7 +169,7 @@ class ChatRoom : NSObject, StreamDelegate {
     // MARK: Sending Messages
     func userDidEnterMessage(_ text: String) {
         // create a new Message with the given text at the current time
-        let newMessage = Message(msg: text, client_time: currentTime())
+        let newMessage = Message(msg: text, client_time: Double(currentTime()))
 
         if isChatServerReachable() {
             // the chat server is reachable. send the messag

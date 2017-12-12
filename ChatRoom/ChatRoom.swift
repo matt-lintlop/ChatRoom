@@ -101,6 +101,7 @@ class ChatRoom : NSObject, StreamDelegate {
         let defaults = UserDefaults()
         defaults.set(time, forKey: "lastTimeConnected")
         self.lastTimeConnected = time
+//        print("Set Last Time Connected: \(time)")
     }
     
     func setLastTimeConnectedToNow() {

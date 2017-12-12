@@ -97,10 +97,14 @@ class ChatRoom : NSObject, StreamDelegate {
         }
     }
     
-    func setLastTimeConnectedToNow() {
+    func setLastTimeConnected(_ time: Int) {
         let defaults = UserDefaults()
-        let time = currentTime()
         defaults.set(time, forKey: "lastTimeConnected")
+        self.lastTimeConnected = time
+    }
+    
+    func setLastTimeConnectedToNow() {
+        setLastTimeConnected(currentTime())
     }
     
     // Parse JSON from the server 1 object at a time

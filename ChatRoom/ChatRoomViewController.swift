@@ -25,8 +25,8 @@ class ChatRoomViewController: UIViewController, UITextFieldDelegate, ChatRoomDel
         chatRoom = ChatRoom()
         chatRoom.delegate = self
         
-//        let time = currentTime() - Int(3000 * 60 * 60 * 1000)          // TESTING
-//        chatRoom.setLastTimeConnected(time)                          // TESTING
+        let time = currentTime() - Int(2 * 60 * 60 * 1000)          // TESTING
+        chatRoom.setLastTimeConnected(time)                          // TESTING
         
         chatRoom.setupNetworkCommunication()
         chatRoom.startCheckingReachability()

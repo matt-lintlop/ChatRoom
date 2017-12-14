@@ -72,9 +72,14 @@ class ChatRoom : NSObject, StreamDelegate {
         outputStream.open()
  
         setActivityInditcatorVisible(false)
-}
+    }
     
+ 
     func teardownNetworkCommunication() {
+        if isChatServerReachable() {
+            setLastTimeConnectedToNow()
+        }
+        
         inputStream.remove(from: .main, forMode: .commonModes)
         inputStream.close()
         inputStream = nil
